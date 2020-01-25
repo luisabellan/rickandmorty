@@ -99,7 +99,7 @@ font-size: 1.2rem;
         <label><span>Name:</span>
           <input
             style={{ marginLeft: "1rem" }}
-            name={name}
+            name="name"
             type="text"
             value={search}
             placeholder="Character's name"

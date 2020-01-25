@@ -79,8 +79,11 @@ form input{
   font-size: 1.2;
  
 }
-
-
+form input[type="text"] {
+ 
+  margin-left: 2rem;
+ }
+ 
 input::placeholder{
 
   font-size: 1.2rem;;
@@ -88,6 +91,8 @@ input::placeholder{
  margin-left: 3rem;
  
 }
+
+
 
 label{
   font-weight: 800;

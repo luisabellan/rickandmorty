@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/Header.js";
-import CharacterList from  "../src/components/CharacterList"
-import WelcomePage from  "../src/components/WelcomePage"
+import CharacterList from  "./components/CharacterList";
+import WelcomePage from  "./components/WelcomePage";
 import {
   BrowserRouter as Router,
   Switch,

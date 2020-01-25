@@ -1,14 +1,33 @@
 import React from "react";
+import styled from "styled-components";
 
 export default function CharacterCard(props) {
+
+
+  const CharactersDiv = styled.div`
+    font-family: 'Poppins', sans-serif;
+  
+  `
+  const NameH2 = styled.h2`
+    font-family: 'Merienda', sans-serif;
+    color: #52331a
+  
+  `
+  const DescriptionP = styled.p`
+  font-family: 'Merienda', sans-serif;
+  color: #5c3412;
+
+  `
+
+
   return (
-    <div key={props.char.id} >
-          <h2>{props.char.name}</h2>
-          <p>Status: {props.char.status}</p>
-          <p>Species: {props.char.species}</p>
-          <p>Gender: {props.char.gender}</p>
-          <p>Origin: {props.char.origin.name}</p>
-          <p>Location: {props.char.location.name}</p>
-    </div>
+    <CharactersDiv key={props.char.id} >
+          <NameH2>{props.char.name}</NameH2>
+          <DescriptionP><strong>Status: </strong>{props.char.status}</DescriptionP>
+          <DescriptionP><strong>Species: </strong>{props.char.species}</DescriptionP>
+          <DescriptionP><strong>Gender: </strong>{props.char.gender}</DescriptionP>
+          <DescriptionP><strong>Origin: </strong>{props.char.origin.name}</DescriptionP>
+          <DescriptionP><strong>Location: </strong>{props.char.location.name}</DescriptionP>
+    </CharactersDiv>
   );
 }

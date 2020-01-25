@@ -8,7 +8,8 @@ export default function Header() {
   font-family: 'Poppins', sans-serif;
   color:#52331a;
   `
-  const FanPageTitleH1 = styled.h1``
+  const FanPageTitleH1 = styled.h1`
+  color: #52331a`
  
 
   

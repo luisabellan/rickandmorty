@@ -1,16 +1,41 @@
 import React from "react";
+import styled from "styled-components"
 
 export default function WelcomePage() {
+
+  const WelcomeSection = styled.section`
+    display:flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    color: brown;
+
+  `
+
+  const WelcomeHeader = styled.header`
+ 
+  
+  `
+
+  const PhotoImg = styled.img`
+    display:flex;
+    align-self:center;
+    border-radius: 50%;
+    margin : 10% auto 
+   
+   
+  `
+
+
   return (
-    <section className="welcome-page">
-      <header>
+    <WelcomeSection className="welcome-page">
+      <WelcomeHeader>
         <h1>Welcome to the ultimate fan site!</h1>
-        <img
+        <PhotoImg
           className="main-img"
           src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
           alt="rick"
         />
-      </header>
-    </section>
+      </WelcomeHeader>
+    </WelcomeSection>
   );
 }

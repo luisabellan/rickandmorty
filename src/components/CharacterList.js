@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CharacterCard from './CharacterCard';
+import Header from './Header'
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -17,21 +19,15 @@ export default function CharacterList() {
       .catch(err => console.log(err));
   }, []);
 
-  console.log(data);
+  //console.log(data);
   //console.log(error)
 
   return (
     <section className="character-list">
+      <Header />
       {/* TODO: `array.map()` over your state here! */}
       {data.map(character => (
-        <div>
-          <h2>{character.name}</h2>
-          <p>Status: {character.status}</p>
-          <p>Species: {character.species}</p>
-          <p>Gender: {character.gender}</p>
-          <p>Origin: {character.origin.name}</p>
-          <p>Location: {character.location.name}</p>
-        </div>
+        <CharacterCard  char={character} />
       ))}
     </section>
   );

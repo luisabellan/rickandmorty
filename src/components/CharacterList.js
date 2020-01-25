@@ -10,13 +10,14 @@ export default function CharacterList() {
 
   const [data, setData] = useState([]);
 
-    // Creating state to save data from API Call
+    // Declaring state variables
     const [characters, setCharacters] = useState([]);
     const [filteredCharacters, setFilteredCharacters] = useState([]);
     const [currentPage, setCurrentPage] = useState("https://rickandmortyapi.com/api/character/");
     const [nextPage, setNextPage] = useState("");
     const [prevPage, setPrevPage] = useState("");
     const [search, setSearch] = useState("");
+    const [name, setName] = useLocalStorage('name', 'Bob'); // stretch: useLocalStorage
   
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
@@ -53,6 +54,7 @@ export default function CharacterList() {
       });
   
       setFilteredCharacters(newList);
+      setName(e.target.value)
     }
   
   function submitHandler(e) {
@@ -72,6 +74,16 @@ const CardDiv = styled.div`
   margin: 1%;
   min-height: 150px;
   padding: 1rem;
+
+`;
+
+const Button = styled.button`
+background-color: #52331a;
+color: #bdada0;
+height: 7vh;
+font-weight: 600;
+font-size: 1.2rem;
+  
 `;
 
 
@@ -81,14 +93,16 @@ const CardDiv = styled.div`
       <Header />
       <form style={{ margin: "20px 0" }} onSubmit={submitHandler}>
         <label>
-          Search:
+          <Button type="submit">Search</Button>
           <input
             style={{ marginLeft: "5px" }}
-            name="name"
+            name={name}
+            type="text"
             value={search}
-            placeholder="insert name"
+            placeholder="Character's name"
             onChange={searchHandler}
           />
+         
           
         </label>
       </form>
@@ -103,4 +117,43 @@ const CardDiv = styled.div`
       </GridDiv>
     </section>
   );
+
+    // Hook
+  function useLocalStorage(key, initialValue) {
+    // State to store our value
+    // Pass initial state function to useState so logic is only executed once
+    const [storedValue, setStoredValue] = useState(() => {
+      try {
+        // Get from local storage by key
+        const item = window.localStorage.getItem(key);
+        // Parse stored json or if none return initialValue
+        return item ? JSON.parse(item) : initialValue;
+      } catch (error) {
+        // If error also return initialValue
+        console.log(error);
+        return initialValue;
+      }
+    });
+
+    // Return a wrapped version of useState's setter function that ...
+    // ... persists the new value to localStorage.
+    const setValue = value => {
+      try {
+        // Allow value to be a function so we have same API as useState
+        const valueToStore =
+          value instanceof Function ? value(storedValue) : value;
+        // Save state
+        setStoredValue(valueToStore);
+        // Save to local storage
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      } catch (error) {
+        // A more advanced implementation would handle the error case
+        console.log(error);
+      }
+    };
+
+
+    return [storedValue, setValue];
+}
+
 }

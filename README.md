@@ -36,6 +36,7 @@ Hosting is cheaper than server-side technologies like PHP (serving static files 
 Use of CDNs
 Easy to Deploy (with surge you can simply type "now" in the terminal!)
 Separation of Concerns is enforced (data access and business logic are out of the user interface)
+..
 
 
 

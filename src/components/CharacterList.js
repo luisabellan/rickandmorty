@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLocalStorage } from "react";
 import axios from "axios";
 import CharacterCard from './CharacterCard';
 import Header from './Header'
@@ -9,6 +9,7 @@ export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
 
   const [data, setData] = useState([]);
+  
 
     // Declaring state variables
     const [characters, setCharacters] = useState([]);
@@ -17,8 +18,9 @@ export default function CharacterList() {
     const [nextPage, setNextPage] = useState("");
     const [prevPage, setPrevPage] = useState("");
     const [search, setSearch] = useState("");
-    const [name, setName] = useLocalStorage('name', 'Bob'); // stretch: useLocalStorage
-  
+
+    // stretch: useLocalStorage
+    const [name, setName] = useLocalStorage('name', 'Morty Smith'); 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
@@ -87,26 +89,27 @@ font-size: 1.2rem;
 `;
 
 
+
   return (
 
     <section className="character-list">
+      <div className="ui centered">
       <Header />
-      <form style={{ margin: "20px 0" }} onSubmit={submitHandler}>
-        <label>
-          <Button type="submit">Search</Button>
+      <form onSubmit={submitHandler}>
+        <label><span>Name:</span>
           <input
-            style={{ marginLeft: "5px" }}
+            style={{ marginLeft: "1rem" }}
             name={name}
             type="text"
             value={search}
             placeholder="Character's name"
             onChange={searchHandler}
           />
-         
-          
+              
         </label>
+          <Button type="submit">Search</Button>
       </form>
-
+      </div>
       <GridDiv>
         {/* TODO: `array.map()` over your state here! */}
         {filteredCharacters.map(character => (
@@ -115,6 +118,17 @@ font-size: 1.2rem;
           </CardDiv>
         ))}
       </GridDiv>
+
+
+      {/* Only render this button if there is a prevPage */}
+      {prevPage && (
+        <Button onClick={() => setCurrentPage(prevPage)}>Previous Page</Button>
+      )}
+
+      {/* Only render this button if there is a nextPage*/}
+      {nextPage && (
+        <Button onClick={() => setCurrentPage(nextPage)}>Next Page</Button>
+      )}
     </section>
   );
 

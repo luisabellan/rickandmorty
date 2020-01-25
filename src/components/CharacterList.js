@@ -20,7 +20,7 @@ export default function CharacterList() {
     const [search, setSearch] = useState("");
 
     // stretch: useLocalStorage
-    const [name, setName] = useLocalStorage('name', 'Morty Smith'); 
+    const [name, setName] = useLocalStorage('name', "Jerry Smith"); 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
@@ -32,12 +32,12 @@ export default function CharacterList() {
         setData(res.data.results);
         setCharacters(charactersData);
         setFilteredCharacters(charactersData);
-        setPrevPage(res.data.previous);
-        setNextPage(res.data.next);
+        setPrevPage(res.data.info.prev);
+        setNextPage(res.data.info.next);
       })
       .catch(err => console.log(err));
   }, [currentPage]);
-
+console.log("previous page:", prevPage)
   //console.log(data);
   //console.log(error)
 
@@ -122,12 +122,12 @@ font-size: 1.2rem;
 
       {/* Only render this button if there is a prevPage */}
       {prevPage && (
-        <Button onClick={() => setCurrentPage(prevPage)}>Previous Page</Button>
+        <button className="pagination-button" onClick={() => setCurrentPage(prevPage)}>Previous Page</button>
       )}
 
       {/* Only render this button if there is a nextPage*/}
       {nextPage && (
-        <Button onClick={() => setCurrentPage(nextPage)}>Next Page</Button>
+        <button className="pagination-button" onClick={() => setCurrentPage(nextPage)}>Next Page</button>
       )}
     </section>
   );

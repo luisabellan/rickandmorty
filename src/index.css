@@ -83,7 +83,7 @@ form input[type="text"] {
  
   margin-left: 2rem;
  }
- 
+
 input::placeholder{
 
   font-size: 1.2rem;;
@@ -101,5 +101,23 @@ label{
 
 label.span{
   font-size: 1.2rem;;
+
+}
+.character-list{
+  display: flex;
+  flex-direction: column;
+}
+.pagination-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  justify-self: center;
+  max-width: 30%;
+  height: 10vh;
+  margin: 0 auto;
+  background-color: #52331a;
+  color: #bdada0;
+  font-size: 1.4rem;
+
 
 }

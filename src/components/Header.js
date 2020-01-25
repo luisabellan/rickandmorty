@@ -6,7 +6,7 @@ export default function Header() {
 
   const FanPageHeader = styled.header`
   font-family: 'Poppins', sans-serif;
-  color:red;
+  color:#52331a;
   `
   const FanPageTitleH1 = styled.h1``
  

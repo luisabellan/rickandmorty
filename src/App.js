@@ -9,20 +9,22 @@ import {
   Link
   
 } from "react-router-dom";
+import styled from "styled-components"
 
+const WelcomeSpan = styled.span`
+`
 
 export default function App() {
   return (
     <div>
       <nav>
-      <ul>
-        <li>
-          <Link to="/">Welcome</Link>
-        </li>
-        <li>
+      
+          <Link to="/"><span>Welcome</span></Link>
+      
+      
           <Link to="/characters">Characters</Link>
-        </li>
-      </ul>
+        
+  
     </nav>
         
       <main>

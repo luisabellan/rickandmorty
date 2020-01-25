@@ -67,16 +67,14 @@ export default function CharacterList() {
 const CardDiv = styled.div`
   border: 1px solid black;
   width: 30%;
-  min-width: 300px;
-  max-width: 300px;
+  min-width: 200px;
+  max-width: 200px;
   margin: 1%;
   min-height: 150px;
+  padding: 1rem;
 `;
 
-const Button = styled.button`
-  background: #000;
-  color: #fff;
-`;
+
   return (
 
     <section className="character-list">

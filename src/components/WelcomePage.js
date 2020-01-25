@@ -7,7 +7,8 @@ export default function WelcomePage() {
     display:flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
-    color: brown;
+    color: #52331a;
+    font-size:1.8rem;
 
   `
 

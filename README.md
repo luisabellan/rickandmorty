@@ -28,7 +28,16 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
-> Answer:
+> Answer: 
+Full page reload is not required
+Lazy loading of elements on pages (saves bandwith and 
+Rich interactions
+Hosting is cheaper than server-side technologies like PHP (serving static files is cheap and sometimes free like Github Pages, Netlify, etc)
+Use of CDNs
+Easy to Deploy (with surge you can simply type "now" in the terminal!)
+Separation of Concerns is enforced (data access and business logic are out of the user interface)
+
+
 
 ## Project Set Up
 

@@ -70,11 +70,10 @@ console.log("previous page:", prevPage)
 
 const CardDiv = styled.div`
   border: 1px solid black;
-  width: 30%;
-  min-width: 200px;
-  max-width: 200px;
+  width: 40%;
+  min-width: 12rem;
+  max-width: 12rem;
   margin: 1%;
-  min-height: 150px;
   padding: 1rem;
 
 `;
@@ -82,6 +81,7 @@ const CardDiv = styled.div`
 const Button = styled.button`
 background-color: #52331a;
 color: #bdada0;
+min-height: 7vh;
 height: 7vh;
 font-weight: 600;
 font-size: 1.2rem;
@@ -95,6 +95,7 @@ font-size: 1.2rem;
     <section className="character-list">
       <div className="ui centered">
       <Header />
+      <div className = "fix-height">
       <form onSubmit={submitHandler}>
         <label><span>Name:</span>
           <input
@@ -108,7 +109,9 @@ font-size: 1.2rem;
               
         </label>
           <Button type="submit">Search</Button>
+          
       </form>
+      </div>
       </div>
       <GridDiv>
         {/* TODO: `array.map()` over your state here! */}

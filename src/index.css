@@ -82,7 +82,7 @@ form{
   display: flex;
   flex-direction: row;
   align-self: center;
-  margin: 0 auto;
+  margin: 3rem auto;
  
 }
 
@@ -96,7 +96,7 @@ form input[type="text"] {
  font-size: 1.4rem;
  text-align: center;
   padding-left: 1rem;
-  
+
  }
 
 input::placeholder{

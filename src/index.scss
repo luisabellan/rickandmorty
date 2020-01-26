@@ -46,7 +46,7 @@ nav a:hover {
 }
 
 main {
-  width: 85vw;
+  width: 90vw;
   min-height: 80vh;
   max-width: 1024px;
   margin: 5px auto;
@@ -70,11 +70,11 @@ main {
 }
 
 /*
-  .main-img {
-    display: block;
-    border-radius: 100%;
-    margin: 0 auto;
-  } */
+    .main-img {
+      display: block;
+      border-radius: 100%;
+      margin: 0 auto;
+    } */
 
 header h1 {
   text-align: center;
@@ -97,10 +97,13 @@ form input {
 
   min-height: 3.7rem;
   height: 3.7rem;
+  margin-left: 1rem;
   @media (max-width: 515px) {
     display: flex;
     margin: 0 auto;
-    width: 20rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    width: 13.5rem;
   }
 }
 
@@ -119,20 +122,19 @@ label {
   font-weight: 900;
   font-size: 1.2rem;
   color: #52331a;
-   @media (max-width: 515px) {
+
+  @media (max-width: 515px) {
     display: flex;
     flex-direction: column;
 
     justify-content: center;
     align-self: center;
     text-align: center;
-   
   }
 }
 
 label.span {
   font-size: 1.2rem;
-
 }
 
 .character-list {
@@ -182,13 +184,15 @@ button {
     flex: 1;
     width: 12rem;
     padding: 0.3rem;
-    
-    
   }
 }
-.button-text{
+.button-text {
+  margin: auto;
+}
+.separate-buttons {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  span {
     margin: auto;
-    
-
-
+  }
 }

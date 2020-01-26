@@ -72,9 +72,7 @@ export default function CharacterList() {
 
   const CardDiv = styled.div`
     border: 1px solid black;
-    width: 40%;
     min-width: 12rem;
-    max-width: 12rem;
     margin: 1%;
     padding: 1rem;
   `;
@@ -86,6 +84,7 @@ export default function CharacterList() {
     font-size: 1.2rem;
     min-height: 3.7rem;
     height: 3.7rem;
+
   `;
 
   return (
@@ -97,7 +96,7 @@ export default function CharacterList() {
             <label>
               <span>Name</span>
               <input
-                style={{ marginLeft: "1rem" }}
+               
                 name="name"
                 type="text"
                 value={search}
@@ -105,7 +104,7 @@ export default function CharacterList() {
                 onChange={searchHandler}
               />
             </label>
-            <Button type="submit"><span className="button-text">Search</span></Button>
+            <Button type="submit"><span className="button-text fixed-height">Search</span></Button>
           </form>
         </div>
       </div>
@@ -121,17 +120,17 @@ export default function CharacterList() {
       {/* Only render this button if there is a prevPage */}
       {prevPage && (
         <button
-          className="pagination-button"
+          className="pagination-button fixed-height button-text separate-buttons"
           onClick={() => setCurrentPage(prevPage)}
         >
-          Previous Page
+          <span class="button-text">Previous Page</span>
         </button>
       )}
 
       {/* Only render this button if there is a nextPage*/}
       {nextPage && (
         <button
-          className="pagination-button"
+          className="pagination-button fixed-height button-text separate-button"
           onClick={() => setCurrentPage(nextPage)}
         >
           <span class="button-text">Next Page</span>

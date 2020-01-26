@@ -1,6 +1,5 @@
 html {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -8,7 +7,6 @@ html {
 *:before,
 *:after {
   -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -19,21 +17,33 @@ body {
 }
 
 nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   width: 85vw;
   min-height: 2vh;
   max-width: 1024px;
   margin: 0px auto;
   background: #bdada0;
   padding: 15px;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 nav a {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   text-decoration: none;
   font-size: 1.3rem;
   font-weight: 800;
@@ -52,13 +62,19 @@ main {
   margin: 5px auto;
   background: #bdada0;
   padding: 15px;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .grid-view {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 .page-view {
@@ -70,75 +86,89 @@ main {
 }
 
 /*
-.main-img {
-  display: block;
-  border-radius: 100%;
-  margin: 0 auto;
-} */
-
+  .main-img {
+    display: block;
+    border-radius: 100%;
+    margin: 0 auto;
+  } */
 header h1 {
   text-align: center;
 }
 
 .center {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 form {
   display: inline;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   margin: 3rem auto;
-
 }
 
 form input {
   min-height: 7vh;
   font-size: 1.2;
   width: 15rem;
-
   min-height: 3.7rem;
   height: 3.7rem;
-
 }
 
 form input[type="text"] {
-
   font-size: 1.4rem;
   text-align: center;
   color: #52331a;
   font-weight: 800;
+}
 
+input::-webkit-input-placeholder {
+  font-size: 1rem;
+}
+
+input:-ms-input-placeholder {
+  font-size: 1rem;
+}
+
+input::-ms-input-placeholder {
+  font-size: 1rem;
 }
 
 input::placeholder {
-
   font-size: 1rem;
-
 }
-
-
 
 label {
   font-weight: 800;
   font-size: 1.2rem;
-
 }
 
 label.span {
   font-size: 1.2rem;
-
-
 }
 
 .character-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .pagination-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   justify-self: center;
   max-width: 30%;
   height: 6vh;
@@ -150,14 +180,22 @@ label.span {
   min-height: 3.7rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
-
 }
 
 .fix-height {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   justify-self: center;
-  align-items: center;
-  align-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   margin: 0 auto;
 }
+/*# sourceMappingURL=index.css.map */

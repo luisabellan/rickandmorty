@@ -43,7 +43,7 @@ export default function CharacterList() {
 
   // This shows while the data is being processed
   if (!characters.length) {
-    return <h1>Loading results...</h1>;
+    return <h1 className="loading-results">Loading results...</h1>;
   } else {
     console.log(characters);
   }

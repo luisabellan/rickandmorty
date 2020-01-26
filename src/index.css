@@ -198,4 +198,8 @@ label.span {
       align-self: center;
   margin: 0 auto;
 }
+
+.loading-results {
+  color: #52331a;
+}
 /*# sourceMappingURL=index.css.map */

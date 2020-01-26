@@ -93,7 +93,8 @@ form input{
 }
 form input[type="text"] {
  
- 
+ font-size: 1.4rem;
+ text-align: center;
   padding-left: 1rem;
  }
 

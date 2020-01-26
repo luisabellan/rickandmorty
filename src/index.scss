@@ -97,6 +97,11 @@ form input {
 
   min-height: 3.7rem;
   height: 3.7rem;
+  @media (max-width: 515px) {
+    display: flex;
+    margin: 0 auto;
+    width: 20rem;
+  }
 }
 
 form input[type="text"] {
@@ -111,12 +116,23 @@ input::placeholder {
 }
 
 label {
-  font-weight: 800;
+  font-weight: 900;
   font-size: 1.2rem;
+  color: #52331a;
+   @media (max-width: 515px) {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+   
+  }
 }
 
 label.span {
   font-size: 1.2rem;
+
 }
 
 .character-list {
@@ -149,10 +165,30 @@ label.span {
   align-self: center;
   margin: 0 auto;
 }
-.loading-results{
-    color:#52331a;
+.loading-results {
+  color: #52331a;
 }
 
-button{
-    border: none;
+button {
+  border: none;
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  @media (max-width: 515px) {
+    display: flex;
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+    margin: 1rem auto;
+    flex: 1;
+    width: 12rem;
+    padding: 0.3rem;
+    
+    
+  }
+}
+.button-text{
+    margin: auto;
+    
+
+
 }

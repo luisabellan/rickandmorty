@@ -12,7 +12,7 @@ export default function App() {
     <div>
       <nav>
         <Link to="/">
-          <span>Welcome</span>
+          <span>Home</span>
         </Link>
 
         <Link to="/characters">Characters</Link>

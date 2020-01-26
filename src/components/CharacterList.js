@@ -95,7 +95,7 @@ export default function CharacterList() {
         <div className="fix-height">
           <form onSubmit={submitHandler}>
             <label>
-              <span>Name:</span>
+              <span>Name</span>
               <input
                 style={{ marginLeft: "1rem" }}
                 name="name"
@@ -105,7 +105,7 @@ export default function CharacterList() {
                 onChange={searchHandler}
               />
             </label>
-            <Button type="submit">Search</Button>
+            <Button type="submit"><span className="button-text">Search</span></Button>
           </form>
         </div>
       </div>
@@ -134,13 +134,13 @@ export default function CharacterList() {
           className="pagination-button"
           onClick={() => setCurrentPage(nextPage)}
         >
-          Next Page
+          <span class="button-text">Next Page</span>
         </button>
       )}
     </section>
   );
 
-  // Hook
+  //Hook
   function useLocalStorage(key, initialValue) {
     // State to store our value
     // Pass initial state function to useState so logic is only executed once

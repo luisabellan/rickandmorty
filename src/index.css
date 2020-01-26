@@ -117,6 +117,16 @@ form input {
   height: 3.7rem;
 }
 
+@media (max-width: 515px) {
+  form input {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto;
+    width: 20rem;
+  }
+}
+
 form input[type="text"] {
   font-size: 1.4rem;
   text-align: center;
@@ -141,8 +151,27 @@ input::placeholder {
 }
 
 label {
-  font-weight: 800;
+  font-weight: 900;
   font-size: 1.2rem;
+  color: #52331a;
+}
+
+@media (max-width: 515px) {
+  label {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-item-align: center;
+        align-self: center;
+    text-align: center;
+  }
 }
 
 label.span {
@@ -205,5 +234,32 @@ label.span {
 
 button {
   border: none;
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 515px) {
+  button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-item-align: center;
+        align-self: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 1rem auto;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: 12rem;
+    padding: 0.3rem;
+  }
+}
+
+.button-text {
+  margin: auto;
 }
 /*# sourceMappingURL=index.css.map */

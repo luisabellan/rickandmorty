@@ -9,8 +9,12 @@ export default function Header() {
   const FanPageTitleH1 = styled.h1`
     color: #52331a;
     display: flex;
+    justify-content:center;
     align-self: center;
-    margin: 0 35%;
+    margin: 0 auto;
+    text-align: center;
+    flex:1;
+
   `;
 
   return (

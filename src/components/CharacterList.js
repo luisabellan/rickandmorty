@@ -18,7 +18,7 @@ export default function CharacterList() {
   const [nextPage, setNextPage] = useState("");
   const [prevPage, setPrevPage] = useState("");
   const [search, setSearch] = useState("");
-
+  const [images, setImages] = useState()
   // stretch: useLocalStorage
   const [name, setName] = useLocalStorage("name", "Jerry Smith");
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function CharacterList() {
       .then(res => {
         let charactersData = res.data.results;
 
-        setData(res.data.results);
+        setData(res.data);
         setCharacters(charactersData);
         setFilteredCharacters(charactersData);
         setPrevPage(res.data.info.prev);
@@ -52,7 +52,7 @@ export default function CharacterList() {
   function searchHandler(e) {
     setSearch(e.target.value);
     const newList = characters.filter(character => {
-      return character.name
+      return character.results.name
         .toLowerCase()
         .includes(e.target.value.toLowerCase());
     });
@@ -135,7 +135,7 @@ export default function CharacterList() {
           className="pagination-button fixed-height button-text separate-button"
           onClick={() => setCurrentPage(nextPage)}
         >
-          <span class="button-text">Next Page</span>
+          <span className="button-text">Next Page</span>
         </button>
       )}
     </section>

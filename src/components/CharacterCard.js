@@ -2,16 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 export default function CharacterCard(props) {
+
+
+
+
+
   const CharactersDiv = styled.div`
     font-family: "Poppins", sans-serif;
-    padding: 1rem;ç
+    padding: 1rem;
     width:80;
     min-with:80rem;
-    @media (max-width: 515px){
-    
-      
-
-    }
+    background-image = url(${props.char.image});
   `;
   const NameH2 = styled.h2`
     font-family: "Merienda", sans-serif;
@@ -22,7 +23,8 @@ export default function CharacterCard(props) {
     color: #5c3412;
      
   `;
-
+  const {currentPage} = props
+console.log({currentPage})
   return (
     <CharactersDiv key={props.char.id}>
       <NameH2>{props.char.name}</NameH2>
@@ -47,5 +49,7 @@ export default function CharacterCard(props) {
         {props.char.location.name}
       </DescriptionP>
     </CharactersDiv>
+     
+
   );
 }

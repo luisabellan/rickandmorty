@@ -72,7 +72,9 @@ export default function CharacterList() {
 
   const CardDiv = styled.div`
     border: 1px solid black;
-    min-width: 12rem;
+   
+    width: 30%;
+    min-width: 20rem;
     margin: 1%;
     padding: 1rem;
   `;

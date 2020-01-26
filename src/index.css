@@ -1,20 +1,23 @@
-
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit;
-  }
+}
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
+
 nav {
   display: flex;
   flex-direction: row;
@@ -28,7 +31,7 @@ nav {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
-nav  a{
+nav a {
   display: flex;
   justify-content: space-evenly;
   text-decoration: none;
@@ -36,7 +39,8 @@ nav  a{
   font-weight: 800;
   color: #52331a;
 }
-nav a:hover{
+
+nav a:hover {
   border-bottom: 2px solid #52331a;
   margin-bottom: -2px;
 }
@@ -64,6 +68,7 @@ main {
 .grid-view div.card.ui {
   margin: 1.25rem;
 }
+
 /*
 .main-img {
   display: block;
@@ -75,55 +80,62 @@ header h1 {
   text-align: center;
 }
 
-.center{
+.center {
   display: flex;
-}
-form{
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  margin: 3rem auto;
- 
 }
 
-form input{
+form {
+  display: inline;
+  align-self: center;
+  margin: 3rem auto;
+
+}
+
+form input {
   min-height: 7vh;
   font-size: 1.2;
- 
+  width: 15rem;
+
+  min-height: 3.7rem;
+  height: 3.7rem;
+
 }
 
 form input[type="text"] {
- 
- font-size: 1.4rem;
- text-align: center;
-  padding-left: 1rem;
 
- }
-
-input::placeholder{
-
-  font-size: 1rem;;
- color: #52331a;
- padding-left: 1rem;
- 
-}
-
-
-
-label{
+  font-size: 1.4rem;
+  text-align: center;
+  color: #52331a;
   font-weight: 800;
-  font-size: 1.2rem;;
-}
-
-label.span{
-  font-size: 1.2rem;;
 
 }
-.character-list{
+
+input::placeholder {
+
+  font-size: 1rem;
+
+}
+
+
+
+label {
+  font-weight: 800;
+  font-size: 1.2rem;
+
+}
+
+label.span {
+  font-size: 1.2rem;
+
+
+}
+
+.character-list {
   display: flex;
   flex-direction: column;
 }
-.pagination-button{
+
+.pagination-button {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -134,18 +146,18 @@ label.span{
   background-color: #52331a;
   color: #bdada0;
   font-size: 1.4rem;
-
+  height: 3.7rem;
+  min-height: 3.7rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 
 }
 
-.fix-height{
+.fix-height {
   display: flex;
   flex-direction: row;
   justify-self: center;
   align-items: center;
   align-self: center;
   margin: 0 auto;
-  
-
-  
 }

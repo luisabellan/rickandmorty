@@ -1,6 +1,6 @@
 [Deployed here: ]( https://sprint-challenge-single-page-apps-chi.now.sh)
-
-# Sprint Challenge: Single Page Applications
+----
+# Sprint Challenge: Single Page Applications 
 
 ## Rick & Morty Edition
 

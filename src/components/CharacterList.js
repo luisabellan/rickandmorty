@@ -52,7 +52,7 @@ export default function CharacterList() {
   function searchHandler(e) {
     setSearch(e.target.value);
     const newList = characters.filter(character => {
-      return character.results.name
+      return character.name
         .toLowerCase()
         .includes(e.target.value.toLowerCase());
     });

@@ -1,9 +1,27 @@
 import React from "react";
+import styled from "styled-components";
 
 export default function Header() {
+  const FanPageHeader = styled.header`
+    font-family: "Poppins", sans-serif;
+    color: #52331a;
+  `;
+  const FanPageTitleH1 = styled.h1`
+    color: #52331a;
+    display: flex;
+    justify-content:center;
+    align-self: center;
+    margin: 0 auto;
+    text-align: center;
+    flex:1;
+
+  `;
+
   return (
-    <header className="ui centered">
-      <h1 className="ui center">Rick &amp; Morty Fan Page</h1>
-    </header>
+    <div className="ui centered">
+      <FanPageHeader className="">
+        <FanPageTitleH1 className="">Rick &amp; Morty Fan Page</FanPageTitleH1>
+      </FanPageHeader>
+    </div>
   );
 }

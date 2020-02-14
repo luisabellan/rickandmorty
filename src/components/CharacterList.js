@@ -106,7 +106,7 @@ export default function CharacterList() {
                 onChange={searchHandler}
               />
             </label>
-            <Button type="submit"><span className="button-text fixed-height">Search</span></Button>
+            // <Button type="submit"><span className="button-text fixed-height">Search</span></Button>
           </form>
         </div>
       </div>

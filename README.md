@@ -1,4 +1,4 @@
-[Deployed here: ]( https://sprint-challenge-single-page-apps-chi.now.sh)
+Deployed here: https://rickandmorty-squarerobin.netlify.com/
 ----
 # Sprint Challenge: Single Page Applications 
 

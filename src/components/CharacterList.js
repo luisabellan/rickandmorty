@@ -96,7 +96,7 @@ export default function CharacterList() {
         <div className="fix-height">
           <form onSubmit={submitHandler}>
             <label>
-              <span>Name</span>
+              <span>Name:</span>
               <input
                
                 name="name"
@@ -106,7 +106,7 @@ export default function CharacterList() {
                 onChange={searchHandler}
               />
             </label>
-            // <Button type="submit"><span className="button-text fixed-height">Search</span></Button>
+            {/*<Button type="submit"><span className="button-text fixed-height">Search</span></Button>*/}
           </form>
         </div>
       </div>

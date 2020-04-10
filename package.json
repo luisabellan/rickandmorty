@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@popperjs/core": "^2.1.1",
+    "@popperjs/core": "^2.2.2",
     "@material-ui/core": "^4.9.7",
     "@types/react": "^16.9.23",
     "axios": "^0.19.2",

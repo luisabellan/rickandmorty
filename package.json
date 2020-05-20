@@ -16,7 +16,7 @@
     "serve": "^11.3.0",
     "styled-components": "^4.4.0",
     "tsutils": "^3.17.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.3"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,4 +1,4 @@
-Deployed here: https://rickandmorty-squarerobin.netlify.com/
+Deployed here: https://rickandmorty-squarerobin.netlify.com/ and https://rickandmorty-nu.now.sh/
 ----
 # Sprint Challenge: Single Page Applications 
 

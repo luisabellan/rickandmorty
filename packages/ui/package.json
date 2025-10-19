@@ -37,16 +37,6 @@
       "require": "./dist/loading-spinner/index.js",
       "types": "./dist/loading-spinner/index.d.ts"
     },
-    "./button": {
-      "import": "./dist/button/index.mjs",
-      "require": "./dist/button/index.js",
-      "types": "./dist/button/index.d.ts"
-    },
-    "./card": {
-      "import": "./dist/card/index.mjs",
-      "require": "./dist/card/index.js",
-      "types": "./dist/card/index.d.ts"
-    },
     "./donation-page": {
       "import": "./dist/donation-page/index.mjs",
       "require": "./dist/donation-page/index.js",
@@ -71,6 +61,16 @@
       "import": "./dist/rickandmorty-landing/index.mjs",
       "require": "./dist/rickandmorty-landing/index.js",
       "types": "./dist/rickandmorty-landing/index.d.ts"
+    },
+    "./button": {
+      "import": "./dist/button/index.mjs",
+      "require": "./dist/button/index.js",
+      "types": "./dist/button/index.d.ts"
+    },
+    "./card": {
+      "import": "./dist/card/index.mjs",
+      "require": "./dist/card/index.js",
+      "types": "./dist/card/index.d.ts"
     }
   },
   "scripts": {

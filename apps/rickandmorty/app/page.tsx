@@ -1,15 +1,15 @@
 import { Metadata } from 'next'
-import { WelcomePage } from '@rickandmorty/ui/welcome-page'
+import { RickAndMortyLanding } from '@rickandmorty/ui/rickandmorty-landing'
 
 export const metadata: Metadata = {
-  title: 'Welcome to the Ultimate Rick & Morty Fan Site',
-  description: 'Welcome to the ultimate destination for Rick and Morty fans. Explore characters, episodes, and dive deep into the multiverse.',
+  title: 'Rick and Morty Universe - Fan Site',
+  description: 'Explore the multiverse of Rick and Morty! Browse characters, locations, and episodes from the beloved animated series. Get schwifty with the ultimate Rick and Morty fan site.',
   openGraph: {
-    title: 'Welcome to the Ultimate Rick & Morty Fan Site',
-    description: 'Welcome to the ultimate destination for Rick and Morty fans. Explore characters, episodes, and dive deep into the multiverse.',
+    title: 'Rick and Morty Universe - Fan Site',
+    description: 'Explore the multiverse of Rick and Morty! Browse characters, locations, and episodes from the beloved animated series.',
   },
 }
 
-export default function HomePage() {
-  return <WelcomePage />
+export default function LandingPage() {
+  return <RickAndMortyLanding />
 }

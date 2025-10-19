@@ -8,7 +8,11 @@ export default defineConfig({
     'src/types/index.ts'
   ],
   format: ['cjs', 'esm'],
-  dts: true,
+  dts: {
+    compilerOptions: {
+      incremental: false
+    }
+  },
   sourcemap: true,
   clean: true,
   treeshake: true,

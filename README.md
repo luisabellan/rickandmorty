@@ -41,6 +41,15 @@ To configure these, copy `.env.example` to `.env.local` and update the values as
 
 This project uses images and content from the Rick and Morty television series for educational and fan appreciation purposes only. All content remains the property of Adult Swim and Williams Street. For more details, see [Copyright Compliance](./COPYRIGHT-COMPLIANCE.md).
 
+## Project Structure
+
+The Rick and Morty Fan Site features:
+
+- **Landing Page**: An engaging homepage with character exploration and site information
+- **Character Browser**: Browse all characters from the Rick and Morty universe with detailed information
+- **Donation System**: Support the site through Ko-fi donations (when enabled)
+- **Financial Transparency**: Reports on how donations are used to maintain the site
+
 # Sprint Challenge: Single Page Applications 
 
 ## Rick & Morty Edition

@@ -7,6 +7,7 @@
   "types": "./index.ts",
   "exports": {
     ".": "./index.ts",
+    "./donation": "./src/donation.ts",
     "./panda": "./panda.config.ts",
     "./eslint": "./eslint.config.js",
     "./typescript/base.json": "./typescript/base.json",

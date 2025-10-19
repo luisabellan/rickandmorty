@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Button } from '@rickandmorty/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@rickandmorty/ui/card';
-import { DonationCounter, KofiButton } from '@rickandmorty/ui';
+import { Button } from '../button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../card';
+import { DonationCounter } from '../donation-counter';
+import { KofiButton } from '../kofi-button';
 import { DONATION_CONFIG } from '@rickandmorty/config/donation';
 
 interface DonationPageProps {

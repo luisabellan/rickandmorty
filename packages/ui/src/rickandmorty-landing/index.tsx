@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@rickandmorty/ui/button';
-import { KofiButton } from '@rickandmorty/ui/kofi-button';
+import { Button } from '../button';
+import { KofiButton } from '../kofi-button';
 
 export function RickAndMortyLanding() {
   const [isSchwifty, setIsSchwifty] = useState(false);

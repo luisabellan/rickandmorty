@@ -1,4 +1,4 @@
-import { KofiButton } from '@rickandmorty/ui';
+import { KofiButton } from '../kofi-button';
 
 export function WelcomePage() {
   return (

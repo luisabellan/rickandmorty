@@ -1,41 +1,40 @@
 {
-  "name": "rick-and-morty-sprint-challenge",
-  "version": "0.1.0",
+  "name": "rickandmorty-monorepo",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-
-    "@popperjs/core": "^2.1.1",
-    "@material-ui/core": "^4.11.0",
-    "@types/react": "^16.9.23",
-    "axios": "^0.19.2",
-    "core-js": "3",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1",
-    "react-swipeable-views": "^0.13.3",
-    "serve": "^11.3.2",
-    "styled-components": "^4.4.0",
-    "tsutils": "^3.17.1",
-    "typescript": "^3.9.7"
-  },
+  "packageManager": "pnpm@9.0.0",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "CI= react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "start": "turbo start",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "type-check": "turbo type-check",
+    "test": "turbo test",
+    "test:watch": "turbo test:watch",
+    "test:e2e": "turbo test:e2e",
+    "test:coverage": "turbo test:coverage",
+    "panda:prepare": "turbo panda:prepare",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo build && changeset publish"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@turbo/gen": "^1.11.0",
+    "turbo": "^1.11.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.6.0"
   },
-  "homepage": "https://sprint-challenge-single-page-apps-qs1nve0i8.now.sh/"
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  }
 }

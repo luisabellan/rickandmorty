@@ -20,6 +20,16 @@ export function WelcomePage() {
         </p>
         <KofiButton />
       </div>
+      
+      <div className="mt-8 text-sm text-center text-gray-600">
+        <p className="mb-2">
+          <strong>Disclaimer:</strong> This site is an unofficial fan site and is not endorsed by, 
+          sponsored by, or affiliated with Adult Swim, Williams Street, or any other copyright holders of Rick and Morty.
+        </p>
+        <p>
+          All character names, images, and related materials are the property of their respective copyright holders.
+        </p>
+      </div>
     </div>
   );
 }

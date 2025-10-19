@@ -37,6 +37,10 @@ The project uses the following environment variables:
 
 To configure these, copy `.env.example` to `.env.local` and update the values as needed. The `.env.local` file is git-ignored and safe for local development.
 
+## Copyright Compliance
+
+This project uses images and content from the Rick and Morty television series for educational and fan appreciation purposes only. All content remains the property of Adult Swim and Williams Street. For more details, see [Copyright Compliance](./COPYRIGHT-COMPLIANCE.md).
+
 # Sprint Challenge: Single Page Applications 
 
 ## Rick & Morty Edition

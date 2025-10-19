@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Poppins, Merienda } from 'next/font/google'
-import './globals.css'
 import { Navigation } from '@rickandmorty/ui/navigation'
+import { ApolloWrapper } from './apollo-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 const poppins = Poppins({ 
@@ -84,10 +84,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${merienda.variable}`}>
       <body className={inter.className}>
-        <Navigation />
-        <main>
-          {children}
-        </main>
+        <ApolloWrapper>
+          <Navigation />
+          <main>
+            {children}
+          </main>
+        </ApolloWrapper>
       </body>
     </html>
   )

@@ -13,7 +13,8 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": false,
-    "noEmit": false
+    "noEmit": false,
+    "incremental": false
   },
   "include": [
     "src/**/*"

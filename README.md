@@ -1,7 +1,41 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/55ebbbbd-f097-4c59-9df9-407100085bce/deploy-status)](https://app.netlify.com/sites/rickandmorty-squarerobin/deploys)
 
+# Rick and Morty Fan Site
+
+This is a fan site for the Rick and Morty universe built as a Next.js 15 application with TypeScript and Tailwind CSS. The project is maintained to be compatible with Spanish unemployment benefits (prestación contributiva de desempleo) regulations.
 
 ----
+
+## Compliance with Spanish Unemployment Benefits
+
+This project is designed to maintain compatibility with Spanish unemployment benefits (prestación contributiva de desempleo) through:
+
+- **No profit motive (no ánimo de lucro)**: All operations are non-commercial
+- **No habitual income (habitualidad de ingresos)**: Donations are voluntary with no recurring payments
+- **Transparent financial reporting**: All donations are used exclusively for hosting and domain expenses
+- **Open source licensing**: MIT license ensures community ownership
+- **Community-focused purpose**: Site exists solely as a fan resource
+
+For more details on our compliance measures, see our policies:
+- [Anti-Habitual Income Policy](./ANTI-HABITUALIDAD-POLICY.md)
+- [No Profit Motive Policy](./NO-ANIMO-DE-LUCRO-POLICY.md)
+- [Financial Transparency Report](./apps/rickandmorty/app/financial-report/page.tsx)
+- [Legal Review](./Legal-Review.md)
+- [Ko-fi Donation Implementation](./KO-FI-SETUP.md)
+
+## Donations
+
+This project uses Ko-fi for donations to cover hosting and domain expenses. During the autónomo period, donations are temporarily accepted. After the autónomo period ends, donation functionality may be disabled to maintain compliance with unemployment benefit regulations.
+
+## Environment Configuration
+
+The project uses the following environment variables:
+
+- `NEXT_PUBLIC_KOFI_USERNAME`: Your Ko-fi username (optional)
+- `NEXT_PUBLIC_KOFI_ENABLED`: Whether to enable the Ko-fi donation button (default: false)
+- `NEXT_PUBLIC_BASE_URL`: The base URL for metadata
+
+To configure these, copy `.env.example` to `.env.local` and update the values as needed. The `.env.local` file is git-ignored and safe for local development.
 
 # Sprint Challenge: Single Page Applications 
 
@@ -133,6 +167,22 @@ Complete search component to your list views.
 - [ ] Refactor to use as few Components as possible - while still readable to a React Dev. (Hint: research these patterns: HoC, render props, FaaC.)
 - [ ] Add additional fields to search form. They are unique for each endpoint. See **[Available parameters**.](https://rickandmortyapi.com/documentation/#filter-characters), etc..
 - [ ] Use the [GraphQL Endpoint](https://rickandmortyapi.com/documentation/#graphql) with multiple search fields.
+
+### Benefits of Using GraphQL over REST API
+
+The current implementation uses the Rick and Morty REST API, but switching to GraphQL would provide several advantages:
+
+- **Efficient Data Fetching**: GraphQL allows requesting only the specific fields needed, reducing over-fetching of data compared to REST endpoints that return fixed data structures.
+
+- **Single Request for Related Data**: Complex data requirements can be fulfilled with a single GraphQL query, while REST might require multiple requests to different endpoints.
+
+- **Better Type Safety**: GraphQL has a strong type system that provides better documentation and catches errors at development time.
+
+- **Reduced Network Requests**: GraphQL can handle complex queries in fewer requests, improving performance and reducing network overhead.
+
+- **Frontend Flexibility**: The frontend can request exactly what it needs without requiring changes on the backend, providing more flexibility in UI development.
+
+- **Built-in Documentation**: GraphQL schemas provide clear documentation about what data is available and how to access it.
 
 > 💡Reminder: git commit -am 'Stretch Progress 💪'
 

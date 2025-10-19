@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { CharacterList } from '@rickandmorty/ui/character-list'
 import { Suspense } from 'react'
 import { LoadingSpinner } from '@rickandmorty/ui/loading-spinner'
+import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 export const metadata: Metadata = {
   title: 'Rick & Morty Characters',
@@ -13,22 +14,146 @@ export const metadata: Metadata = {
   },
 }
 
+// GraphQL query
+const GET_CHARACTERS = gql`
+  query GetCharacters($page: Int, $name: String, $status: String, $species: String, $gender: String) {
+    characters(page: $page, filter: { name: $name, status: $status, species: $species, gender: $gender }) {
+      info {
+        count
+        pages
+        next
+        prev
+      }
+      results {
+        id
+        name
+        status
+        species
+        type
+        gender
+        origin {
+          name
+          type
+          dimension
+        }
+        location {
+          name
+          type
+          dimension
+        }
+        image
+        episode {
+          id
+          name
+          air_date
+          episode
+        }
+        created
+      }
+    }
+  }
+`;
+
+interface Character {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: {
+    name: string;
+    type: string;
+    dimension: string;
+  };
+  location: {
+    name: string;
+    type: string;
+    dimension: string;
+  };
+  image: string;
+  episode: {
+    id: number;
+    name: string;
+    air_date: string;
+    episode: string;
+  }[];
+  created: string;
+}
+
+interface CharactersData {
+  characters: {
+    info: {
+      count: number;
+      pages: number;
+      next: number | null;
+      prev: number | null;
+    };
+    results: Character[];
+  };
+}
+
+interface CharactersVars {
+  page?: number;
+  name?: string | null;
+  status?: string | null;
+  species?: string | null;
+  gender?: string | null;
+}
+
 interface CharactersPageProps {
-  searchParams: {
+  searchParams: Promise<{
     page?: string
     search?: string
     status?: string
     species?: string
     gender?: string
-  }
+  }>
 }
 
-export default function CharactersPage({ searchParams }: CharactersPageProps) {
+async function fetchCharacters(searchParams: {
+  page?: string
+  search?: string
+  status?: string
+  species?: string
+  gender?: string
+}) {
+  const client = new ApolloClient({
+    link: new HttpLink({
+      uri: 'https://rickandmortyapi.com/graphql',
+      fetch: fetch,
+    }),
+    cache: new InMemoryCache(),
+    ssrMode: true,
+  });
+
+  const currentPage = searchParams.page ? parseInt(searchParams.page) : 1;
+  const name = searchParams.search || null;
+  const status = searchParams.status || null;
+  const species = searchParams.species || null;
+  const gender = searchParams.gender || null;
+
+  const { data } = await client.query<CharactersData, CharactersVars>({
+    query: GET_CHARACTERS,
+    variables: {
+      page: currentPage,
+      name,
+      status,
+      species,
+      gender
+    }
+  });
+
+  return data;
+}
+
+export default async function CharactersPage({ searchParams }: CharactersPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const data = await fetchCharacters(resolvedSearchParams);
+  
   return (
     <div>
-      <Suspense fallback={<LoadingSpinner />}>
-        <CharacterList searchParams={searchParams} />
-      </Suspense>
+      <CharacterList data={data} searchParams={resolvedSearchParams} />
     </div>
   )
 }

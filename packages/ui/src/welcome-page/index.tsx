@@ -1,0 +1,25 @@
+import { KofiButton } from '@rickandmorty/ui';
+
+export function WelcomePage() {
+  return (
+    <div className="welcome-page max-w-4xl mx-auto p-6">
+      <h1 className="text-3xl font-bold text-center mb-4">Welcome to the Ultimate Rick & Morty Fan Site</h1>
+      <p className="text-lg text-center mb-6">Explore characters, episodes, and dive deep into the multiverse.</p>
+      
+      <div className="flex justify-center mb-6">
+        <a href="/characters" className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded">
+          Browse Characters
+        </a>
+      </div>
+      
+      <div className="mt-8 p-4 bg-gray-100 rounded-lg text-center">
+        <h2 className="text-xl font-semibold mb-2">Support This Fan Project</h2>
+        <p className="mb-4">
+          This site is maintained to remain compatible with Spanish unemployment benefits regulations. 
+          Donations help cover hosting and domain expenses only.
+        </p>
+        <KofiButton />
+      </div>
+    </div>
+  );
+}

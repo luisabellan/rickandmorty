@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Character {
+  id         Int       @id @default(autoincrement())
+  apiId      Int       @unique
+  name       String
+  status     String?
+  species    String?
+  type       String?   @default("")
+  gender     String?
+  originId   Int?
+  locationId Int?
+  image      String?
+  url        String?
+  created    DateTime?
+  location   Location? @relation("CharacterLocation", fields: [locationId], references: [apiId])
+  origin     Location? @relation("CharacterOrigin", fields: [originId], references: [apiId])
+  episodes   Episode[] @relation("CharacterToEpisode")
+
+  @@map("characters")
+}
+
+model Location {
+  id               Int         @id @default(autoincrement())
+  apiId            Int         @unique
+  name             String
+  type             String?
+  dimension        String?
+  url              String?
+  created          DateTime?
+  currentResidents Character[] @relation("CharacterLocation")
+  residents        Character[] @relation("CharacterOrigin")
+
+  @@map("locations")
+}
+
+model Episode {
+  id         Int         @id @default(autoincrement())
+  apiId      Int         @unique
+  name       String
+  airDate    String?
+  episode    String?
+  url        String?
+  created    DateTime?
+  characters Character[] @relation("CharacterToEpisode")
+
+  @@map("episodes")
+}

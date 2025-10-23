@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 
 // GraphQL query
 const GET_CHARACTERS = gql`
-  query GetCharacters($page: Int, $name: String, $status: String, $species: String, $gender: String) {
-    characters(page: $page, filter: { name: $name, status: $status, species: $species, gender: $gender }) {
+  query GetCharacters($page: Int, $name: String, $status: String, $species: String, $gender: String, $location: String) {
+    characters(page: $page, filter: { name: $name, status: $status, species: $species, gender: $gender, location: $location }) {
       info {
         count
         pages
@@ -99,6 +99,7 @@ interface CharactersVars {
   status?: string | null;
   species?: string | null;
   gender?: string | null;
+  location?: string | null;
 }
 
 interface CharactersPageProps {
@@ -108,6 +109,7 @@ interface CharactersPageProps {
     status?: string
     species?: string
     gender?: string
+    location?: string
   }>
 }
 
@@ -117,10 +119,11 @@ async function fetchCharacters(searchParams: {
   status?: string
   species?: string
   gender?: string
+  location?: string
 }) {
   const client = new ApolloClient({
     link: new HttpLink({
-      uri: 'https://rickandmortyapi.com/graphql',
+      uri: 'http://localhost:4000/graphql', // Use our local API with location filtering
       fetch: fetch,
     }),
     cache: new InMemoryCache(),
@@ -132,6 +135,7 @@ async function fetchCharacters(searchParams: {
   const status = searchParams.status || null;
   const species = searchParams.species || null;
   const gender = searchParams.gender || null;
+  const location = searchParams.location || null;
 
   const { data } = await client.query<CharactersData, CharactersVars>({
     query: GET_CHARACTERS,
@@ -140,7 +144,8 @@ async function fetchCharacters(searchParams: {
       name,
       status,
       species,
-      gender
+      gender,
+      location
     }
   });
 

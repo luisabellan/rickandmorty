@@ -8,24 +8,24 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./mocks": {
+      "types": "./dist/mocks/index.d.ts",
       "import": "./dist/mocks/index.mjs",
-      "require": "./dist/mocks/index.js",
-      "types": "./dist/mocks/index.d.ts"
+      "require": "./dist/mocks/index.js"
     },
     "./render": {
+      "types": "./dist/render/index.d.ts",
       "import": "./dist/render/index.mjs",
-      "require": "./dist/render/index.js",
-      "types": "./dist/render/index.d.ts"
+      "require": "./dist/render/index.js"
     },
     "./setup": {
+      "types": "./dist/setup/index.d.ts",
       "import": "./dist/setup/index.mjs",
-      "require": "./dist/setup/index.js",
-      "types": "./dist/setup/index.d.ts"
+      "require": "./dist/setup/index.js"
     }
   },
   "scripts": {

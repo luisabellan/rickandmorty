@@ -1,5 +1,6 @@
 export { CharacterList } from './character-list';
 export { CharacterCard } from './character-card';
+export { CharacterSearch } from './character-search';
 export { Navigation } from './navigation';
 export { WelcomePage } from './welcome-page';
 export { LoadingSpinner } from './loading-spinner';

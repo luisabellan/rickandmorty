@@ -18,9 +18,14 @@
       "types": "./dist/character-card/index.d.ts"
     },
     "./character-list": {
-      "import": "./dist/character-list/index.mjs", 
+      "import": "./dist/character-list/index.mjs",
       "require": "./dist/character-list/index.js",
       "types": "./dist/character-list/index.d.ts"
+    },
+    "./character-search": {
+      "import": "./dist/character-search/index.mjs",
+      "require": "./dist/character-search/index.js",
+      "types": "./dist/character-search/index.d.ts"
     },
     "./navigation": {
       "import": "./dist/navigation/index.mjs",
@@ -74,7 +79,7 @@
     }
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && node scripts/add-use-client.js",
     "dev": "tsup --watch",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint src/**/*.{ts,tsx} --fix",

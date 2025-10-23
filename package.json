@@ -6,6 +6,7 @@
   "packageManager": "pnpm@9.0.0",
   "scripts": {
     "dev": "turbo dev",
+    "dev:concurrent": "concurrently --names \"FRONTEND,API\" -c \"bgBlue.bold,bgMagenta.bold\" --kill-others-on-fail \"pnpm --filter @rickandmorty/app dev\" \"pnpm --filter @rickandmorty/api dev\"",
     "build": "turbo build",
     "start": "turbo start",
     "lint": "turbo lint",
@@ -21,7 +22,11 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo build && changeset publish"
+    "release": "turbo build && changeset publish",
+    "db:start": "docker compose up -d",
+    "db:migrate": "cd apps/api && npx prisma migrate dev",
+    "db:populate": "cd apps/api && node scripts/populate-db.js",
+    "setup": "pnpm db:start && sleep 10 && pnpm db:migrate && pnpm db:populate"
   },
   "workspaces": [
     "apps/*",
@@ -30,8 +35,9 @@
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
     "@turbo/gen": "^1.11.0",
+    "concurrently": "^9.2.1",
     "prettier": "^3.1.0",
-    "turbo": "^1.11.0",
+    "turbo": "^2.5.8",
     "typescript": "^5.6.0"
   },
   "engines": {

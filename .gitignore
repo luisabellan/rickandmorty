@@ -39,3 +39,14 @@ MIGRATION_PLAN.md
 PLAN.md
 *_PLAN.md
 migration-*.md
+
+# Project planning files (gitignored per policy)
+CLAUDE.md
+
+# Only README.md and CHANGELOG.md allowed in root
+*.md
+!README.md
+!CHANGELOG.md
+# Allow README.md in subdirectories
+!apps/*/README.md
+!packages/*/README.md

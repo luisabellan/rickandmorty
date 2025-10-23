@@ -5,8 +5,11 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { useMemo } from 'react';
 
 function createApolloClient() {
+  // Use environment variable for API endpoint, fallback to production API
+  const uri = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT || 'https://rickandmortyapi.com/graphql';
+  
   const httpLink = createHttpLink({
-    uri: 'https://rickandmortyapi.com/graphql',
+    uri,
     // Important: Set credentials to include if you need to send cookies
     credentials: 'same-origin',
   });

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Poppins, Merienda } from 'next/font/google'
 import { Navigation } from '@rickandmorty/ui/navigation'
 import { ApolloWrapper } from './apollo-provider'
+import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 const poppins = Poppins({ 

@@ -3,8 +3,9 @@ services:
   - type: web
     name: rickandmorty-api
     runtime: node
-    buildCommand: cd apps/api && npm install && npx prisma generate
-    startCommand: cd apps/api && npm start
+    rootDirectory: apps/api
+    buildCommand: npm install && npx prisma generate
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production

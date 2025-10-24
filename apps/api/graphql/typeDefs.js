@@ -214,6 +214,7 @@ const typeDefs = gql`
     type: String
     gender: String
     location: String
+    origin: String
   }
 
   input FilterLocation {

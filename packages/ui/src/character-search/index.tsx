@@ -8,6 +8,7 @@ interface CharacterSearchProps {
   initialSpecies?: string;
   initialGender?: string;
   initialLocation?: string;
+  initialOrigin?: string;
 }
 
 export function CharacterSearch({
@@ -16,12 +17,14 @@ export function CharacterSearch({
   initialSpecies = '',
   initialGender = '',
   initialLocation = '',
+  initialOrigin = '',
 }: CharacterSearchProps) {
   const [search, setSearch] = useState(initialSearch);
   const [status, setStatus] = useState(initialStatus);
   const [species, setSpecies] = useState(initialSpecies);
   const [gender, setGender] = useState(initialGender);
   const [location, setLocation] = useState(initialLocation);
+  const [origin, setOrigin] = useState(initialOrigin);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,6 +35,7 @@ export function CharacterSearch({
     if (species) params.set('species', species);
     if (gender) params.set('gender', gender);
     if (location) params.set('location', location);
+    if (origin) params.set('origin', origin);
 
     window.location.href = `/characters?${params.toString()}`;
   };
@@ -42,6 +46,7 @@ export function CharacterSearch({
     setSpecies('');
     setGender('');
     setLocation('');
+    setOrigin('');
     window.location.href = '/characters';
   };
 
@@ -66,7 +71,7 @@ export function CharacterSearch({
         </div>
 
         {/* Filters in a grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           {/* Status filter */}
           <div>
             <label htmlFor="status" className="block text-sm font-medium text-gray-300 mb-2">
@@ -119,10 +124,10 @@ export function CharacterSearch({
             </select>
           </div>
 
-          {/* Location filter */}
+          {/* Current Location filter */}
           <div>
             <label htmlFor="location" className="block text-sm font-medium text-gray-300 mb-2">
-              Location
+              Current Location
             </label>
             <input
               type="text"
@@ -130,6 +135,21 @@ export function CharacterSearch({
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               placeholder="Earth, Citadel..."
+              className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+
+          {/* Origin filter */}
+          <div>
+            <label htmlFor="origin" className="block text-sm font-medium text-gray-300 mb-2">
+              Origin
+            </label>
+            <input
+              type="text"
+              id="origin"
+              value={origin}
+              onChange={(e) => setOrigin(e.target.value)}
+              placeholder="Earth, Dimension..."
               className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
@@ -154,7 +174,7 @@ export function CharacterSearch({
       </form>
 
       {/* Active filters display */}
-      {(search || status || species || gender || location) && (
+      {(search || status || species || gender || location || origin) && (
         <div className="mt-4 pt-4 border-t border-gray-700">
           <p className="text-sm text-gray-400 mb-2">Active filters:</p>
           <div className="flex flex-wrap gap-2">
@@ -180,7 +200,12 @@ export function CharacterSearch({
             )}
             {location && (
               <span className="px-3 py-1 bg-yellow-600 bg-opacity-50 text-yellow-200 rounded-full text-sm">
-                Location: {location}
+                Current Location: {location}
+              </span>
+            )}
+            {origin && (
+              <span className="px-3 py-1 bg-orange-600 bg-opacity-50 text-orange-200 rounded-full text-sm">
+                Origin: {origin}
               </span>
             )}
           </div>

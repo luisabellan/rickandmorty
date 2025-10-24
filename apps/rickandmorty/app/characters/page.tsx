@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 
 // GraphQL query
 const GET_CHARACTERS = gql`
-  query GetCharacters($page: Int, $name: String, $status: String, $species: String, $gender: String, $location: String) {
-    characters(page: $page, filter: { name: $name, status: $status, species: $species, gender: $gender, location: $location }) {
+  query GetCharacters($page: Int, $name: String, $status: String, $species: String, $gender: String, $location: String, $origin: String) {
+    characters(page: $page, filter: { name: $name, status: $status, species: $species, gender: $gender, location: $location, origin: $origin }) {
       info {
         count
         pages
@@ -100,6 +100,7 @@ interface CharactersVars {
   species?: string | null;
   gender?: string | null;
   location?: string | null;
+  origin?: string | null;
 }
 
 interface CharactersPageProps {
@@ -110,6 +111,7 @@ interface CharactersPageProps {
     species?: string
     gender?: string
     location?: string
+    origin?: string
   }>
 }
 
@@ -120,6 +122,7 @@ async function fetchCharacters(searchParams: {
   species?: string
   gender?: string
   location?: string
+  origin?: string
 }) {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/graphql';
 
@@ -138,6 +141,7 @@ async function fetchCharacters(searchParams: {
   const species = searchParams.species || null;
   const gender = searchParams.gender || null;
   const location = searchParams.location || null;
+  const origin = searchParams.origin || null;
 
   try {
     const { data } = await client.query<CharactersData, CharactersVars>({
@@ -148,7 +152,8 @@ async function fetchCharacters(searchParams: {
         status,
         species,
         gender,
-        location
+        location,
+        origin
       }
     });
 

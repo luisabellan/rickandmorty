@@ -16,52 +16,18 @@ class PrismaCharacter {
       if (filter.type) whereClause.type = { equals: filter.type, mode: 'insensitive' };
       if (filter.gender) whereClause.gender = { equals: filter.gender, mode: 'insensitive' };
       
-      // Handle location filtering - this is the new feature
+      // Handle current location filtering
       if (filter.location) {
-        // Create location filtering conditions
-        // For location filtering, we want to match locations that contain the filter term
-        // We need to join with the Location table and filter on the Location's name field
-        const locationConditions = {
-          OR: [
-            {
-              location: {
-                name: { contains: filter.location, mode: 'insensitive' }
-              }
-            },
-            {
-              origin: {
-                name: { contains: filter.location, mode: 'insensitive' }
-              }
-            }
-          ]
+        whereClause.location = {
+          name: { contains: filter.location, mode: 'insensitive' }
         };
-        
-        // If there are other filters, combine them with location filter using AND
-        const hasOtherFilters = filter.name || filter.status || filter.species || filter.type || filter.gender;
-        if (hasOtherFilters) {
-          // Use AND to combine all conditions
-          whereClause.AND = [locationConditions];
-          
-          // Add existing conditions to the AND array
-          const existingConditions = {};
-          if (filter.name) existingConditions.name = whereClause.name;
-          if (filter.status) existingConditions.status = whereClause.status;
-          if (filter.species) existingConditions.species = whereClause.species;
-          if (filter.type) existingConditions.type = whereClause.type;
-          if (filter.gender) existingConditions.gender = whereClause.gender;
-          
-          whereClause.AND.push(existingConditions);
-          
-          // Clear the individual conditions from the main whereClause
-          delete whereClause.name;
-          delete whereClause.status;
-          delete whereClause.species;
-          delete whereClause.type;
-          delete whereClause.gender;
-        } else {
-          // If there are no other filters, just use the location conditions directly
-          Object.assign(whereClause, locationConditions);
-        }
+      }
+
+      // Handle origin location filtering
+      if (filter.origin) {
+        whereClause.origin = {
+          name: { contains: filter.origin, mode: 'insensitive' }
+        };
       }
     }
 

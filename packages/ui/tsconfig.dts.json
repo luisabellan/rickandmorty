@@ -1,0 +1,34 @@
+{
+  "extends": "@rickandmorty/config/typescript/base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "jsx": "react-jsx",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": false,
+    "noEmit": false,
+    "incremental": false,
+    "baseUrl": ".",
+    "paths": {
+      "@rickandmorty/utils": ["../utils/src/index.ts"]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.test.tsx",
+    "**/*.test.ts",
+    "**/*.spec.tsx", 
+    "**/*.spec.ts"
+  ]
+}

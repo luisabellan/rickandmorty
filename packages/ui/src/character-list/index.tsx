@@ -49,6 +49,7 @@ interface CharacterListProps {
     species?: string;
     gender?: string;
     location?: string;
+    origin?: string;
   };
 }
 
@@ -68,6 +69,7 @@ export function CharacterList({ data, searchParams }: CharacterListProps) {
   const species = searchParams.species || null;
   const gender = searchParams.gender || null;
   const location = searchParams.location || null;
+  const origin = searchParams.origin || null;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-purple-900 py-12 px-4">
@@ -82,6 +84,7 @@ export function CharacterList({ data, searchParams }: CharacterListProps) {
           initialSpecies={species || ''}
           initialGender={gender || ''}
           initialLocation={location || ''}
+          initialOrigin={origin || ''}
         />
 
         <div className="mb-4">
@@ -99,7 +102,7 @@ export function CharacterList({ data, searchParams }: CharacterListProps) {
         <div className="flex justify-center items-center gap-4 py-8">
           {info.prev && (
             <a
-              href={`?page=${info.prev}${name ? `&search=${name}` : ''}${status ? `&status=${status}` : ''}${species ? `&species=${species}` : ''}${gender ? `&gender=${gender}` : ''}${location ? `&location=${location}` : ''}`}
+              href={`?page=${info.prev}${name ? `&search=${name}` : ''}${status ? `&status=${status}` : ''}${species ? `&species=${species}` : ''}${gender ? `&gender=${gender}` : ''}${location ? `&location=${location}` : ''}${origin ? `&origin=${origin}` : ''}`}
               className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
             >
               ← Previous
@@ -112,7 +115,7 @@ export function CharacterList({ data, searchParams }: CharacterListProps) {
 
           {info.next && (
             <a
-              href={`?page=${info.next}${name ? `&search=${name}` : ''}${status ? `&status=${status}` : ''}${species ? `&species=${species}` : ''}${gender ? `&gender=${gender}` : ''}${location ? `&location=${location}` : ''}`}
+              href={`?page=${info.next}${name ? `&search=${name}` : ''}${status ? `&status=${status}` : ''}${species ? `&species=${species}` : ''}${gender ? `&gender=${gender}` : ''}${location ? `&location=${location}` : ''}${origin ? `&origin=${origin}` : ''}`}
               className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
             >
               Next →

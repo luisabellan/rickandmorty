@@ -121,7 +121,7 @@ async function fetchCharacters(searchParams: {
   gender?: string
   location?: string
 }) {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/graphql';
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/graphql';
 
   const client = new ApolloClient({
     link: new HttpLink({
@@ -157,7 +157,7 @@ async function fetchCharacters(searchParams: {
     console.error('Failed to fetch characters:', error);
     throw new Error(
       `Unable to connect to the API server at ${apiUrl}. ` +
-      'Please ensure the API server is running on port 8080. ' +
+      'Please ensure the API server is running on port 4000. ' +
       'Run: cd apps/api && pnpm dev'
     );
   }

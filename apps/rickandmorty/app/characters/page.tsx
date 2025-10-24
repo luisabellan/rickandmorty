@@ -121,9 +121,11 @@ async function fetchCharacters(searchParams: {
   gender?: string
   location?: string
 }) {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/graphql';
+
   const client = new ApolloClient({
     link: new HttpLink({
-      uri: 'http://localhost:4000/graphql', // Use our local API with location filtering
+      uri: apiUrl,
       fetch: fetch,
     }),
     cache: new InMemoryCache(),

@@ -139,19 +139,28 @@ async function fetchCharacters(searchParams: {
   const gender = searchParams.gender || null;
   const location = searchParams.location || null;
 
-  const { data } = await client.query<CharactersData, CharactersVars>({
-    query: GET_CHARACTERS,
-    variables: {
-      page: currentPage,
-      name,
-      status,
-      species,
-      gender,
-      location
-    }
-  });
+  try {
+    const { data } = await client.query<CharactersData, CharactersVars>({
+      query: GET_CHARACTERS,
+      variables: {
+        page: currentPage,
+        name,
+        status,
+        species,
+        gender,
+        location
+      }
+    });
 
-  return data;
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch characters:', error);
+    throw new Error(
+      `Unable to connect to the API server at ${apiUrl}. ` +
+      'Please ensure the API server is running on port 8080. ' +
+      'Run: cd apps/api && pnpm dev'
+    );
+  }
 }
 
 export default async function CharactersPage({ searchParams }: CharactersPageProps) {

@@ -1,0 +1,54 @@
+{
+  "name": "@rickandmorty/utils",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shared utilities, hooks, and helpers for Rick and Morty applications",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.mjs",
+      "require": "./dist/hooks/index.js"
+    },
+    "./api": {
+      "types": "./dist/api/index.d.ts",
+      "import": "./dist/api/index.mjs",
+      "require": "./dist/api/index.js"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.mjs",
+      "require": "./dist/types/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0"
+  },
+  "devDependencies": {
+    "@rickandmorty/config": "workspace:*",
+    "@rickandmorty/test-utils": "workspace:*",
+    "@types/node": "^22.0.0",
+    "jest": "^29.7.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.6.0"
+  }
+}

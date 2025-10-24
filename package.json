@@ -1,41 +1,53 @@
 {
-  "name": "rick-and-morty-sprint-challenge",
-  "version": "0.1.0",
+  "name": "rickandmorty-monorepo",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-
-    "@popperjs/core": "^2.1.1",
-    "@material-ui/core": "^4.11.0",
-    "@types/react": "^16.9.23",
-    "axios": "^0.19.2",
-    "core-js": "3",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1",
-    "react-swipeable-views": "^0.13.3",
-    "serve": "^11.3.2",
-    "styled-components": "^4.4.0",
-    "tsutils": "^3.17.1",
-    "typescript": "^3.9.7"
-  },
+  "license": "MIT",
+  "packageManager": "pnpm@10.19.0",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "CI= react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "dev": "turbo dev",
+    "dev:concurrent": "concurrently --names \"FRONTEND,API\" -c \"bgBlue.bold,bgMagenta.bold\" --kill-others-on-fail \"pnpm --filter @rickandmorty/app dev\" \"pnpm --filter @rickandmorty/api dev\"",
+    "build": "turbo build",
+    "start": "turbo start",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "type-check": "turbo type-check",
+    "test": "turbo test",
+    "test:watch": "turbo test:watch",
+    "test:e2e": "turbo test:e2e",
+    "test:coverage": "turbo test:coverage",
+    "panda:prepare": "turbo panda:prepare",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo build && changeset publish",
+    "db:start": "docker compose up -d",
+    "db:migrate": "cd apps/api && npx prisma migrate dev",
+    "db:populate": "cd apps/api && node scripts/populate-db.js",
+    "setup": "pnpm db:start && sleep 10 && pnpm db:migrate && pnpm db:populate"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@turbo/gen": "^1.11.0",
+    "concurrently": "^9.2.1",
+    "prettier": "^3.1.0",
+    "turbo": "^2.5.8",
+    "typescript": "^5.6.0"
   },
-  "homepage": "https://sprint-challenge-single-page-apps-qs1nve0i8.now.sh/"
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.14.0",
+    "@apollo/client-integration-nextjs": "^0.14.0",
+    "@apollo/experimental-nextjs-app-support": "^0.14.0",
+    "graphql": "^16.11.0"
+  }
 }

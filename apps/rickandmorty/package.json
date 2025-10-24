@@ -1,0 +1,48 @@
+{
+  "name": "@rickandmorty/app",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start --port 3000",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "panda:prepare": "panda codegen",
+    "clean": "rm -rf .next dist"
+  },
+  "dependencies": {
+    "@rickandmorty/ui": "workspace:*",
+    "@rickandmorty/utils": "workspace:*",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.45.0",
+    "@playwright/test": "^1.40.0",
+    "@rickandmorty/config": "workspace:*",
+    "@rickandmorty/test-utils": "workspace:*",
+    "@testing-library/jest-dom": "^6.1.0",
+    "@testing-library/react": "^14.1.0",
+    "@testing-library/user-event": "^14.5.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.1.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.6.0"
+  }
+}

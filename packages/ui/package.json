@@ -1,0 +1,118 @@
+{
+  "name": "@rickandmorty/ui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shared UI components for Rick and Morty applications",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./character-card": {
+      "types": "./dist/character-card/index.d.ts",
+      "import": "./dist/character-card/index.mjs",
+      "require": "./dist/character-card/index.js"
+    },
+    "./character-list": {
+      "types": "./dist/character-list/index.d.ts",
+      "import": "./dist/character-list/index.mjs",
+      "require": "./dist/character-list/index.js"
+    },
+    "./character-search": {
+      "types": "./dist/character-search/index.d.ts",
+      "import": "./dist/character-search/index.mjs",
+      "require": "./dist/character-search/index.js"
+    },
+    "./navigation": {
+      "types": "./dist/navigation/index.d.ts",
+      "import": "./dist/navigation/index.mjs",
+      "require": "./dist/navigation/index.js"
+    },
+    "./welcome-page": {
+      "types": "./dist/welcome-page/index.d.ts",
+      "import": "./dist/welcome-page/index.mjs",
+      "require": "./dist/welcome-page/index.js"
+    },
+    "./loading-spinner": {
+      "types": "./dist/loading-spinner/index.d.ts",
+      "import": "./dist/loading-spinner/index.mjs",
+      "require": "./dist/loading-spinner/index.js"
+    },
+    "./donation-page": {
+      "types": "./dist/donation-page/index.d.ts",
+      "import": "./dist/donation-page/index.mjs",
+      "require": "./dist/donation-page/index.js"
+    },
+    "./donation-counter": {
+      "types": "./dist/donation-counter/index.d.ts",
+      "import": "./dist/donation-counter/index.mjs",
+      "require": "./dist/donation-counter/index.js"
+    },
+    "./financial-report": {
+      "types": "./dist/financial-report/index.d.ts",
+      "import": "./dist/financial-report/index.mjs",
+      "require": "./dist/financial-report/index.js"
+    },
+    "./kofi-button": {
+      "types": "./dist/kofi-button/index.d.ts",
+      "import": "./dist/kofi-button/index.mjs",
+      "require": "./dist/kofi-button/index.js"
+    },
+    "./rickandmorty-landing": {
+      "types": "./dist/rickandmorty-landing/index.d.ts",
+      "import": "./dist/rickandmorty-landing/index.mjs",
+      "require": "./dist/rickandmorty-landing/index.js"
+    },
+    "./button": {
+      "types": "./dist/button/index.d.ts",
+      "import": "./dist/button/index.mjs",
+      "require": "./dist/button/index.js"
+    },
+    "./card": {
+      "types": "./dist/card/index.d.ts",
+      "import": "./dist/card/index.mjs",
+      "require": "./dist/card/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup && node scripts/add-use-client.js",
+    "dev": "tsup --watch",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next": "^15.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0",
+    "@radix-ui/react-slot": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@testing-library/react": "^14.1.0",
+    "@testing-library/jest-dom": "^6.1.0",
+    "@testing-library/user-event": "^14.5.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.6.0",
+    "@rickandmorty/config": "workspace:*",
+    "@rickandmorty/test-utils": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

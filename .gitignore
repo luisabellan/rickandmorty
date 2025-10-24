@@ -1,6 +1,5 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-
 # dependencies
 /node_modules
 
@@ -10,8 +9,19 @@
 # production
 /build
 
+# Next.js
+.next/
+out/
+
+# Turbo
+.turbo/
+
+# Panda CSS
+styled-system/
+
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
@@ -20,5 +30,23 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 *.lock
 *.log
+
+# Migration and planning docs (sensitive/temporary)
+MIGRATION_PLAN.md
+PLAN.md
+*_PLAN.md
+migration-*.md
+
+# Project planning files (gitignored per policy)
+CLAUDE.md
+
+# Only README.md and CHANGELOG.md allowed in root
+*.md
+!README.md
+!CHANGELOG.md
+# Allow README.md in subdirectories
+!apps/*/README.md
+!packages/*/README.md

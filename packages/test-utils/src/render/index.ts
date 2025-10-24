@@ -12,7 +12,7 @@ import type { ReactElement } from 'react';
 export function renderWithProviders(
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
-) {
+): ReturnType<typeof render> {
   return render(ui, { ...options });
 }
 

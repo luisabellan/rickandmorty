@@ -8,74 +8,74 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./character-card": {
+      "types": "./dist/character-card/index.d.ts",
       "import": "./dist/character-card/index.mjs",
-      "require": "./dist/character-card/index.js",
-      "types": "./dist/character-card/index.d.ts"
+      "require": "./dist/character-card/index.js"
     },
     "./character-list": {
+      "types": "./dist/character-list/index.d.ts",
       "import": "./dist/character-list/index.mjs",
-      "require": "./dist/character-list/index.js",
-      "types": "./dist/character-list/index.d.ts"
+      "require": "./dist/character-list/index.js"
     },
     "./character-search": {
+      "types": "./dist/character-search/index.d.ts",
       "import": "./dist/character-search/index.mjs",
-      "require": "./dist/character-search/index.js",
-      "types": "./dist/character-search/index.d.ts"
+      "require": "./dist/character-search/index.js"
     },
     "./navigation": {
+      "types": "./dist/navigation/index.d.ts",
       "import": "./dist/navigation/index.mjs",
-      "require": "./dist/navigation/index.js", 
-      "types": "./dist/navigation/index.d.ts"
+      "require": "./dist/navigation/index.js"
     },
     "./welcome-page": {
+      "types": "./dist/welcome-page/index.d.ts",
       "import": "./dist/welcome-page/index.mjs",
-      "require": "./dist/welcome-page/index.js",
-      "types": "./dist/welcome-page/index.d.ts"
+      "require": "./dist/welcome-page/index.js"
     },
     "./loading-spinner": {
+      "types": "./dist/loading-spinner/index.d.ts",
       "import": "./dist/loading-spinner/index.mjs",
-      "require": "./dist/loading-spinner/index.js",
-      "types": "./dist/loading-spinner/index.d.ts"
+      "require": "./dist/loading-spinner/index.js"
     },
     "./donation-page": {
+      "types": "./dist/donation-page/index.d.ts",
       "import": "./dist/donation-page/index.mjs",
-      "require": "./dist/donation-page/index.js",
-      "types": "./dist/donation-page/index.d.ts"
+      "require": "./dist/donation-page/index.js"
     },
     "./donation-counter": {
+      "types": "./dist/donation-counter/index.d.ts",
       "import": "./dist/donation-counter/index.mjs",
-      "require": "./dist/donation-counter/index.js",
-      "types": "./dist/donation-counter/index.d.ts"
+      "require": "./dist/donation-counter/index.js"
     },
     "./financial-report": {
+      "types": "./dist/financial-report/index.d.ts",
       "import": "./dist/financial-report/index.mjs",
-      "require": "./dist/financial-report/index.js",
-      "types": "./dist/financial-report/index.d.ts"
+      "require": "./dist/financial-report/index.js"
     },
     "./kofi-button": {
+      "types": "./dist/kofi-button/index.d.ts",
       "import": "./dist/kofi-button/index.mjs",
-      "require": "./dist/kofi-button/index.js",
-      "types": "./dist/kofi-button/index.d.ts"
+      "require": "./dist/kofi-button/index.js"
     },
     "./rickandmorty-landing": {
+      "types": "./dist/rickandmorty-landing/index.d.ts",
       "import": "./dist/rickandmorty-landing/index.mjs",
-      "require": "./dist/rickandmorty-landing/index.js",
-      "types": "./dist/rickandmorty-landing/index.d.ts"
+      "require": "./dist/rickandmorty-landing/index.js"
     },
     "./button": {
+      "types": "./dist/button/index.d.ts",
       "import": "./dist/button/index.mjs",
-      "require": "./dist/button/index.js",
-      "types": "./dist/button/index.d.ts"
+      "require": "./dist/button/index.js"
     },
     "./card": {
+      "types": "./dist/card/index.d.ts",
       "import": "./dist/card/index.mjs",
-      "require": "./dist/card/index.js",
-      "types": "./dist/card/index.d.ts"
+      "require": "./dist/card/index.js"
     }
   },
   "scripts": {

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@10.19.0",
   "scripts": {
     "dev": "turbo dev",
     "dev:concurrent": "concurrently --names \"FRONTEND,API\" -c \"bgBlue.bold,bgMagenta.bold\" --kill-others-on-fail \"pnpm --filter @rickandmorty/app dev\" \"pnpm --filter @rickandmorty/api dev\"",

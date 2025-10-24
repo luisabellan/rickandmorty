@@ -19,7 +19,7 @@ export default defineConfig({
     'src/rickandmorty-landing/index.tsx'
   ],
   format: ['cjs', 'esm'],
-  dts: false, // Temporarily disable DTS build to focus on main builds
+  dts: false, // Disable automatic DTS generation
   sourcemap: true,
   clean: true,
   external: ['react', 'react-dom', 'next', '@rickandmorty/utils', '@rickandmorty/config'],
@@ -36,5 +36,12 @@ export default defineConfig({
   },
   onSuccess: async () => {
     execSync('node scripts/add-use-client.js', { stdio: 'inherit' })
+    // Try to generate DTS files manually after the main build
+    try {
+      execSync('npx tsc --project tsconfig.dts.json', { stdio: 'inherit' })
+    } catch (error) {
+      console.warn('Warning: Failed to generate DTS files:', error.message)
+      console.warn('Continuing with JavaScript bundles only...')
+    }
   }
 })

@@ -65,7 +65,7 @@ export function CharacterCard({ character }: CharacterCardProps) {
 
           <p className="text-gray-300">
             <span className="text-gray-400">Location:</span>{' '}
-            <span className="text-white font-medium truncate block">
+            <span className="text-white font-medium truncate">
               {character.location?.name || 'Unknown'}
             </span>
           </p>

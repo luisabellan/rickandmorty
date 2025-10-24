@@ -43,13 +43,14 @@ app.use(cors())
 
 app.set('trust proxy', 1)
 
+// Apply Apollo middleware first (it has its own body parsing)
+server.applyMiddleware({ app })
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.use('/api/character/avatar', express.static(path.join(__dirname, 'images')))
 app.use('/api', routes)
-
-server.applyMiddleware({ app })
 
 app.use(handle.error.notFound)
 app.use(handle.error.productionErrors)

@@ -74,6 +74,7 @@ class PrismaCharacter {
         include: {
           location: true,
           origin: true,
+          episodes: true,
         }
       }),
       prisma.character.count({ where: whereClause })
@@ -99,7 +100,13 @@ class PrismaCharacter {
         residents: [], // Will be resolved separately if needed
         created: char.location.created ? char.location.created.toISOString() : null
       } : null,
-      episode: char.episode || [],
+      episode: char.episodes ? char.episodes.map(ep => ({
+        id: ep.apiId.toString(),
+        name: ep.name,
+        air_date: ep.airDate,
+        episode: ep.episode,
+        created: ep.created ? ep.created.toISOString() : null
+      })) : [],
       created: char.created ? char.created.toISOString() : null
     }));
 
@@ -122,6 +129,7 @@ class PrismaCharacter {
       include: {
         location: true,
         origin: true,
+        episodes: true,
       }
     });
 
@@ -144,7 +152,13 @@ class PrismaCharacter {
         residents: [],
         created: char.location.created ? char.location.created.toISOString() : null
       } : null,
-      episode: char.episode || [],
+      episode: char.episodes ? char.episodes.map(ep => ({
+        id: ep.apiId.toString(),
+        name: ep.name,
+        air_date: ep.airDate,
+        episode: ep.episode,
+        created: ep.created ? ep.created.toISOString() : null
+      })) : [],
       created: char.created ? char.created.toISOString() : null
     }));
   }
@@ -155,6 +169,7 @@ class PrismaCharacter {
       include: {
         location: true,
         origin: true,
+        episodes: true,
       }
     });
 
@@ -179,7 +194,13 @@ class PrismaCharacter {
         residents: [],
         created: result.location.created ? result.location.created.toISOString() : null
       } : null,
-      episode: result.episode || [],
+      episode: result.episodes ? result.episodes.map(ep => ({
+        id: ep.apiId.toString(),
+        name: ep.name,
+        air_date: ep.airDate,
+        episode: ep.episode,
+        created: ep.created ? ep.created.toISOString() : null
+      })) : [],
       created: result.created ? result.created.toISOString() : null
     };
   }

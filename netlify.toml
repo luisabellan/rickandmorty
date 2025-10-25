@@ -1,10 +1,7 @@
 [build]
-  # Build from repository root to enable workspace linking
   base = "/"
-  # Install all workspace packages, build UI package, then build the Next.js app
-  command = "pnpm install && pnpm --filter @rickandmorty/ui build && pnpm --filter @rickandmorty/app build"
-  # Publish directory is relative to repository root
   publish = "apps/rickandmorty/.next"
+  command = "pnpm install && pnpm --filter ./apps/rickandmorty... run build"
 
 [build.environment]
   NODE_VERSION = "20"

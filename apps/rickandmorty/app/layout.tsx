@@ -32,7 +32,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
+  metadataBase: typeof process.env.NEXT_PUBLIC_BASE_URL === 'string' && process.env.NEXT_PUBLIC_BASE_URL 
+    ? new URL(process.env.NEXT_PUBLIC_BASE_URL) 
+    : new URL('https://rickandmorty-fansite.netlify.app'),
   alternates: {
     canonical: '/',
   },

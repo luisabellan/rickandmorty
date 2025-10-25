@@ -8,20 +8,13 @@ import React from 'react';
 function makeClient() {
   const httpLink = createHttpLink({
     uri: process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT || 'https://rickandmortyapi.com/graphql',
+    // For SSR with external APIs, credentials should be set properly
     credentials: 'same-origin',
   });
 
   return new ApolloClient({
-    cache: new InMemoryCache({
-      // Add type policies for better SSR support
-      typePolicies: {
-        Query: {
-          fields: {
-            // Configure fields that might cause SSR issues
-          },
-        },
-      },
-    }),
+    // For SSR, it's important to initialize the cache without default data on the server
+    cache: new InMemoryCache(),
     link: httpLink,
   });
 }

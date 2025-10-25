@@ -1,0 +1,21 @@
+[build]
+  # Build from repository root to enable workspace linking
+  base = "/"
+  # Install all workspace packages, build UI package, then build the Next.js app
+  command = "pnpm install && pnpm --filter @rickandmorty/ui build && pnpm --filter @rickandmorty/app build"
+  # Publish directory is relative to repository root
+  publish = "apps/rickandmorty/.next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NEXT_PUBLIC_API_URL = "https://rickandmortyapi.com/graphql"
+
+# Next.js plugin for optimal deployment
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Redirect rules
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

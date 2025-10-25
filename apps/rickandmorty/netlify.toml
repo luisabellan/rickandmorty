@@ -1,9 +1,11 @@
 [build]
-  publish = ".next"
-  command = "pnpm build"
+  base = "/"
+  publish = "apps/rickandmorty/.next"
+  command = "pnpm install && pnpm --filter ./apps/rickandmorty... run build"
 
 [build.environment]
   NODE_VERSION = "20"
+  NEXT_PUBLIC_API_URL = "https://rickandmorty-api-csmq.onrender.com/graphql"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

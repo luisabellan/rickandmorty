@@ -18,6 +18,6 @@ services:
 # Notes:
 # 1. Render automatically injects PORT environment variable (no need to set it)
 # 2. Free tier: 750 hours/month, spins down after 15 minutes of inactivity
-# 3. DATABASE_URL must be added manually in Render dashboard from your Neon database
+# 3. For deployment, consider using PostgreSQL instead of SQLite for production
 # 4. Change 'branch: main' to 'branch: development' if deploying from development branch
 # 5. Health check uses /graphql endpoint to verify Apollo Server is running

@@ -21,6 +21,12 @@ out/
 # Panda CSS
 styled-system/
 
+# Database files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
 # misc
 .DS_Store
 .env

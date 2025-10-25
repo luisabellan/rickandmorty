@@ -22,7 +22,7 @@ const handleInfo = ({ stats }) => {
  * @param {"ID" | "IDs" | "FILTER"} type
  */
 const catch404 = (type, error) => {
-  if (error.extensions.response.status === 404) {
+  if (error.extensions && error.extensions.response && error.extensions.response.status === 404) {
     if (type === 'FILTER') {
       return { results: [] }
     } else if (type === 'IDs') {

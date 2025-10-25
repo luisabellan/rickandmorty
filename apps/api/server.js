@@ -62,7 +62,7 @@ const startServer = async () => {
   app.listen(PORT, () => {
     console.log(
       '\x1b[34m%s\x1b[0m',
-      `\n\n  ${app.get('env').toUpperCase()}\n\n  REST      → http://localhost:${PORT}/api/\n  GraphQL   → http://localhost:${PORT}${server.graphqlPath}/\n  Database  → PostgreSQL with Prisma\n  `,
+      `\n\n  ${app.get('env').toUpperCase()}\n\n  REST      → http://localhost:${PORT}/api/\n  GraphQL   → http://localhost:${PORT}${server.graphqlPath}/\n  Database  → SQLite with Prisma\n  `,
     )
   })
   

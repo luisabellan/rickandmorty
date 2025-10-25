@@ -55,6 +55,7 @@ The Rick and Morty Fan Site features:
 
 - **Landing Page**: An engaging homepage with character exploration and site information
 - **Character Browser**: Browse all characters from the Rick and Morty universe with detailed information
+- **Advanced Filtering**: Filter characters by name, status, species, gender, location, and origin
 - **Donation System**: Support the site through Ko-fi donations (when enabled)
 - **Financial Transparency**: Reports on how donations are used to maintain the site
 
@@ -63,36 +64,23 @@ The Rick and Morty Fan Site features:
 To run both the frontend and API locally for development:
 
 1. Install dependencies: `pnpm install`
-2. Start the PostgreSQL database using Docker: `docker compose up -d`
-3. Run database migrations: `cd apps/api && npx prisma migrate dev`
-4. Populate the database with Rick and Morty data: `cd apps/api && node scripts/populate-db.js`
-5. Run both applications concurrently: `pnpm dev:concurrent`
+2. Seed the database with Rick and Morty data: `pnpm setup`
+3. Run both applications concurrently: `pnpm dev:all`
    - This will start the Next.js app on port 3000
    - And the GraphQL API on port 4000
-6. The frontend will automatically connect to the local API endpoint
+4. The frontend will automatically connect to the local API endpoint
 
 To run applications separately:
 - Frontend only: `pnpm --filter @rickandmorty/app dev`
 - API only: `pnpm --filter @rickandmorty/api dev`
 
-## Docker Setup
-
-The project includes Docker configuration for easy database setup:
-
-1. Make sure you have Docker and Docker Compose installed
-2. Start the PostgreSQL database: `docker compose up -d`
-3. The database will be available at `localhost:5432`
-4. To stop the database: `docker compose down`
-
 ## Database Setup
 
-The API uses PostgreSQL with Prisma ORM. To set up the database:
+The API uses SQLite with Prisma ORM. No database server setup required - SQLite database is created automatically.
 
-1. Start the database with Docker: `docker compose up -d`
-2. Navigate to the API directory: `cd apps/api`
-3. Run the database migrations: `npx prisma migrate dev`
-4. Populate the database with Rick and Morty data: `node scripts/populate-db.js`
-5. The location filtering feature will be available once the data is populated
+1. The database is automatically seeded when running: `pnpm setup`
+2. The application includes character, location, and episode data from the Rick and Morty API
+3. All filtering features (location, origin, name, status, etc.) work out of the box
 
 ## Features
 

@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.19.0+sha512.c9fc7236e92adf5c8af42fd5bf1612df99c2ceb62f27047032f4720b33f8eacdde311865e91c411f2774f618d82f320808ecb51718bfa82c060c4ba7c76a32b8",
   "scripts": {
     "dev": "turbo dev",
-    "dev:all": "pnpm db:start && sleep 10 && concurrently --names \"FRONTEND,API\" -c \"bgBlue.bold,bgMagenta.bold\" --kill-others-on-fail \"pnpm --filter @rickandmorty/app dev\" \"cd apps/api && pnpm dev\"",
+    "dev:all": "concurrently --names \"FRONTEND,API\" -c \"bgBlue.bold,bgMagenta.bold\" --kill-others-on-fail \"pnpm --filter @rickandmorty/app dev\" \"cd apps/api && pnpm dev\"",
     "dev:concurrent": "concurrently --names \"FRONTEND,API\" -c \"bgBlue.bold,bgMagenta.bold\" --kill-others-on-fail \"pnpm --filter @rickandmorty/app dev\" \"cd apps/api && pnpm dev\"",
     "build": "turbo build",
     "start": "turbo start",
@@ -24,10 +24,8 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo build && changeset publish",
-    "db:start": "docker compose up -d",
-    "db:migrate": "cd apps/api && npx prisma migrate dev",
-    "db:populate": "cd apps/api && node scripts/populate-db.js",
-    "setup": "pnpm db:start && sleep 10 && pnpm db:migrate && pnpm db:populate"
+    "db:seed": "cd apps/api && npm run seed",
+    "setup": "pnpm db:seed"
   },
   "workspaces": [
     "apps/*",

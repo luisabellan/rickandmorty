@@ -31,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Next.js 15 Turbo monorepo structure
 - Apollo GraphQL integration
 - Character browsing with location filtering
-- PostgreSQL database with Prisma ORM
+- SQLite database with Prisma ORM
 - Ko-fi donation integration
 - Financial transparency reporting
 - Netlify deployment configuration

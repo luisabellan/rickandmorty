@@ -10,23 +10,29 @@ class PrismaCharacter {
     
     if (filter) {
       // Handle exact match filters
-      if (filter.name) whereClause.name = { contains: filter.name, mode: 'insensitive' };
-      if (filter.status) whereClause.status = { equals: filter.status, mode: 'insensitive' };
-      if (filter.species) whereClause.species = { equals: filter.species, mode: 'insensitive' };
-      if (filter.type) whereClause.type = { equals: filter.type, mode: 'insensitive' };
-      if (filter.gender) whereClause.gender = { equals: filter.gender, mode: 'insensitive' };
+      if (filter.name) whereClause.name = { contains: filter.name };
+      if (filter.status) whereClause.status = { equals: filter.status };
+      if (filter.species) whereClause.species = { equals: filter.species };
+      if (filter.type) whereClause.type = { equals: filter.type };
+      if (filter.gender) whereClause.gender = { equals: filter.gender };
       
       // Handle current location filtering
       if (filter.location) {
+        // Filter characters based on their location name using the relation
         whereClause.location = {
-          name: { contains: filter.location, mode: 'insensitive' }
+          name: {
+            contains: filter.location
+          }
         };
       }
 
       // Handle origin location filtering
       if (filter.origin) {
+        // Filter characters based on their origin name using the relation
         whereClause.origin = {
-          name: { contains: filter.origin, mode: 'insensitive' }
+          name: {
+            contains: filter.origin
+          }
         };
       }
     }
@@ -179,9 +185,9 @@ class PrismaLocation {
 
     const whereClause = {};
     if (filter) {
-      if (filter.name) whereClause.name = { contains: filter.name, mode: 'insensitive' };
-      if (filter.type) whereClause.type = { equals: filter.type, mode: 'insensitive' };
-      if (filter.dimension) whereClause.dimension = { contains: filter.dimension, mode: 'insensitive' };
+      if (filter.name) whereClause.name = { contains: filter.name };
+      if (filter.type) whereClause.type = { equals: filter.type };
+      if (filter.dimension) whereClause.dimension = { contains: filter.dimension };
     }
 
     const [results, totalCount] = await Promise.all([
@@ -249,8 +255,8 @@ class PrismaEpisode {
 
     const whereClause = {};
     if (filter) {
-      if (filter.name) whereClause.name = { contains: filter.name, mode: 'insensitive' };
-      if (filter.episode) whereClause.episode = { contains: filter.episode, mode: 'insensitive' };
+      if (filter.name) whereClause.name = { contains: filter.name };
+      if (filter.episode) whereClause.episode = { contains: filter.episode };
     }
 
     const [results, totalCount] = await Promise.all([

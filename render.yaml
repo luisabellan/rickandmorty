@@ -4,14 +4,13 @@ services:
     name: rickandmorty-api
     runtime: node
     rootDirectory: apps/api
-    buildCommand: npm install && npx prisma generate
-    startCommand: npm start
+    buildCommand: npm install -g pnpm && pnpm install && npx prisma generate
+    startCommand: node server.js
     envVars:
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
         sync: false  # You'll add this manually from Neon
-    healthCheckPath: /graphql
     plan: free
     autoDeploy: true
     branch: main

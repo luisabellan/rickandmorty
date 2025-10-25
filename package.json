@@ -33,20 +33,20 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
-    "@turbo/gen": "^1.11.0",
+    "@changesets/cli": "^2.29.7",
+    "@turbo/gen": "^2.5.8",
     "concurrently": "^9.2.1",
-    "prettier": "^3.1.0",
+    "prettier": "^3.6.2",
     "turbo": "^2.5.8",
-    "typescript": "^5.6.0"
+    "typescript": "^5.9.3"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "pnpm": ">=9.0.0"
+    "node": ">=20.0.0",
+    "pnpm": ">=10.19.0"
   },
   "dependencies": {
-    "@apollo/client": "^3.14.0",
-    "@apollo/client-integration-nextjs": "^0.14.0",
+    "@apollo/client": "^4.0.7",
+    "@apollo/client-integration-nextjs": "^0.14.1",
     "@apollo/experimental-nextjs-app-support": "^0.14.0",
     "graphql": "^16.11.0"
   }

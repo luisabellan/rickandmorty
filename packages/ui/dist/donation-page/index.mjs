@@ -1,9 +1,12 @@
 "use client";
-import { cn } from '@rickandmorty/utils';
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
-import { DONATION_CONFIG } from '@rickandmorty/config/donation';
 
+function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
 var Card = ({ className, ...props }) => /* @__PURE__ */ jsx(
   "div",
   {
@@ -98,6 +101,16 @@ var DonationCounter = ({
       /* @__PURE__ */ jsx("p", { children: "This project operates without profit to maintain compliance with Spanish unemployment benefits regulations." })
     ] })
   ] });
+};
+
+// ../config/src/donation.ts
+var DONATION_CONFIG = {
+  kofi: {
+    username: process.env.NEXT_PUBLIC_KOFI_USERNAME || "your-kofi-username",
+    enabled: process.env.NEXT_PUBLIC_KOFI_ENABLED === "true" || false
+    // Default to false for compliance
+  }
+  // Other donation settings can be added here
 };
 var KofiButton = ({
   text = "Support on Ko-fi",

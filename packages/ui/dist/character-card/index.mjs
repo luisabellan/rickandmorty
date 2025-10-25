@@ -35,7 +35,7 @@ function CharacterCard({ character }) {
         /* @__PURE__ */ jsxs("p", { className: "text-gray-300", children: [
           /* @__PURE__ */ jsx("span", { className: "text-gray-400", children: "Location:" }),
           " ",
-          /* @__PURE__ */ jsx("span", { className: "text-white font-medium truncate block", children: character.location?.name || "Unknown" })
+          /* @__PURE__ */ jsx("span", { className: "text-white font-medium truncate", children: character.location?.name || "Unknown" })
         ] }),
         character.type && character.type.trim() !== "" && /* @__PURE__ */ jsxs("p", { className: "text-gray-300", children: [
           /* @__PURE__ */ jsx("span", { className: "text-gray-400", children: "Type:" }),

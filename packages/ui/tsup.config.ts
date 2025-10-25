@@ -22,8 +22,8 @@ export default defineConfig({
   dts: false, // Disable automatic DTS generation
   sourcemap: true,
   clean: true,
-  external: ['react', 'react-dom', 'next', '@rickandmorty/utils', '@rickandmorty/config'],
-  noExternal: ['@radix-ui/react-slot', 'class-variance-authority'],
+  external: ['react', 'react-dom', 'next'],
+  noExternal: ['@radix-ui/react-slot', 'class-variance-authority', '@rickandmorty/utils', '@rickandmorty/config'],
   treeshake: true,
   splitting: false,
   minify: false,

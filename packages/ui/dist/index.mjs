@@ -3,9 +3,8 @@ import { jsx, jsxs } from 'react/jsx-runtime';
 import * as React3 from 'react';
 import React3__default, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { DONATION_CONFIG } from '@rickandmorty/config/donation';
-import { cn } from '@rickandmorty/utils';
 import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 function CharacterCard({ character }) {
   const statusColor = {
@@ -41,7 +40,7 @@ function CharacterCard({ character }) {
         /* @__PURE__ */ jsxs("p", { className: "text-gray-300", children: [
           /* @__PURE__ */ jsx("span", { className: "text-gray-400", children: "Location:" }),
           " ",
-          /* @__PURE__ */ jsx("span", { className: "text-white font-medium truncate block", children: character.location?.name || "Unknown" })
+          /* @__PURE__ */ jsx("span", { className: "text-white font-medium truncate", children: character.location?.name || "Unknown" })
         ] }),
         character.type && character.type.trim() !== "" && /* @__PURE__ */ jsxs("p", { className: "text-gray-300", children: [
           /* @__PURE__ */ jsx("span", { className: "text-gray-400", children: "Type:" }),
@@ -57,13 +56,15 @@ function CharacterSearch({
   initialStatus = "",
   initialSpecies = "",
   initialGender = "",
-  initialLocation = ""
+  initialLocation = "",
+  initialOrigin = ""
 }) {
   const [search, setSearch] = useState(initialSearch);
   const [status, setStatus] = useState(initialStatus);
   const [species, setSpecies] = useState(initialSpecies);
   const [gender, setGender] = useState(initialGender);
   const [location, setLocation] = useState(initialLocation);
+  const [origin, setOrigin] = useState(initialOrigin);
   const handleSubmit = (e) => {
     e.preventDefault();
     const params = new URLSearchParams();
@@ -72,6 +73,7 @@ function CharacterSearch({
     if (species) params.set("species", species);
     if (gender) params.set("gender", gender);
     if (location) params.set("location", location);
+    if (origin) params.set("origin", origin);
     window.location.href = `/characters?${params.toString()}`;
   };
   const handleReset = () => {
@@ -80,6 +82,7 @@ function CharacterSearch({
     setSpecies("");
     setGender("");
     setLocation("");
+    setOrigin("");
     window.location.href = "/characters";
   };
   return /* @__PURE__ */ jsxs("div", { className: "bg-gray-800 bg-opacity-80 rounded-lg p-6 mb-8 shadow-lg", children: [
@@ -99,7 +102,7 @@ function CharacterSearch({
           }
         )
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4", children: [
+      /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4", children: [
         /* @__PURE__ */ jsxs("div", { children: [
           /* @__PURE__ */ jsx("label", { htmlFor: "status", className: "block text-sm font-medium text-gray-300 mb-2", children: "Status" }),
           /* @__PURE__ */ jsxs(
@@ -152,7 +155,7 @@ function CharacterSearch({
           )
         ] }),
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("label", { htmlFor: "location", className: "block text-sm font-medium text-gray-300 mb-2", children: "Location" }),
+          /* @__PURE__ */ jsx("label", { htmlFor: "location", className: "block text-sm font-medium text-gray-300 mb-2", children: "Current Location" }),
           /* @__PURE__ */ jsx(
             "input",
             {
@@ -161,6 +164,20 @@ function CharacterSearch({
               value: location,
               onChange: (e) => setLocation(e.target.value),
               placeholder: "Earth, Citadel...",
+              className: "w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsx("label", { htmlFor: "origin", className: "block text-sm font-medium text-gray-300 mb-2", children: "Origin" }),
+          /* @__PURE__ */ jsx(
+            "input",
+            {
+              type: "text",
+              id: "origin",
+              value: origin,
+              onChange: (e) => setOrigin(e.target.value),
+              placeholder: "Earth, Dimension...",
               className: "w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             }
           )
@@ -186,7 +203,7 @@ function CharacterSearch({
         )
       ] })
     ] }),
-    (search || status || species || gender || location) && /* @__PURE__ */ jsxs("div", { className: "mt-4 pt-4 border-t border-gray-700", children: [
+    (search || status || species || gender || location || origin) && /* @__PURE__ */ jsxs("div", { className: "mt-4 pt-4 border-t border-gray-700", children: [
       /* @__PURE__ */ jsx("p", { className: "text-sm text-gray-400 mb-2", children: "Active filters:" }),
       /* @__PURE__ */ jsxs("div", { className: "flex flex-wrap gap-2", children: [
         search && /* @__PURE__ */ jsxs("span", { className: "px-3 py-1 bg-blue-600 bg-opacity-50 text-blue-200 rounded-full text-sm", children: [
@@ -206,8 +223,12 @@ function CharacterSearch({
           gender
         ] }),
         location && /* @__PURE__ */ jsxs("span", { className: "px-3 py-1 bg-yellow-600 bg-opacity-50 text-yellow-200 rounded-full text-sm", children: [
-          "Location: ",
+          "Current Location: ",
           location
+        ] }),
+        origin && /* @__PURE__ */ jsxs("span", { className: "px-3 py-1 bg-orange-600 bg-opacity-50 text-orange-200 rounded-full text-sm", children: [
+          "Origin: ",
+          origin
         ] })
       ] })
     ] })
@@ -224,6 +245,7 @@ function CharacterList({ data, searchParams }) {
   const species = searchParams.species || null;
   const gender = searchParams.gender || null;
   const location = searchParams.location || null;
+  const origin = searchParams.origin || null;
   return /* @__PURE__ */ jsx("div", { className: "min-h-screen bg-gradient-to-b from-gray-900 to-purple-900 py-12 px-4", children: /* @__PURE__ */ jsxs("div", { className: "max-w-7xl mx-auto", children: [
     /* @__PURE__ */ jsx("h1", { className: "text-4xl md:text-5xl font-bold text-white text-center mb-8", children: "Rick and Morty Characters" }),
     /* @__PURE__ */ jsx(
@@ -233,7 +255,8 @@ function CharacterList({ data, searchParams }) {
         initialStatus: status || "",
         initialSpecies: species || "",
         initialGender: gender || "",
-        initialLocation: location || ""
+        initialLocation: location || "",
+        initialOrigin: origin || ""
       }
     ),
     /* @__PURE__ */ jsx("div", { className: "mb-4", children: /* @__PURE__ */ jsxs("p", { className: "text-gray-300 text-center", children: [
@@ -248,7 +271,7 @@ function CharacterList({ data, searchParams }) {
       info.prev && /* @__PURE__ */ jsx(
         "a",
         {
-          href: `?page=${info.prev}${name ? `&search=${name}` : ""}${status ? `&status=${status}` : ""}${species ? `&species=${species}` : ""}${gender ? `&gender=${gender}` : ""}${location ? `&location=${location}` : ""}`,
+          href: `?page=${info.prev}${name ? `&search=${name}` : ""}${status ? `&status=${status}` : ""}${species ? `&species=${species}` : ""}${gender ? `&gender=${gender}` : ""}${location ? `&location=${location}` : ""}${origin ? `&origin=${origin}` : ""}`,
           className: "px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors",
           children: "\u2190 Previous"
         }
@@ -262,7 +285,7 @@ function CharacterList({ data, searchParams }) {
       info.next && /* @__PURE__ */ jsx(
         "a",
         {
-          href: `?page=${info.next}${name ? `&search=${name}` : ""}${status ? `&status=${status}` : ""}${species ? `&species=${species}` : ""}${gender ? `&gender=${gender}` : ""}${location ? `&location=${location}` : ""}`,
+          href: `?page=${info.next}${name ? `&search=${name}` : ""}${status ? `&status=${status}` : ""}${species ? `&species=${species}` : ""}${gender ? `&gender=${gender}` : ""}${location ? `&location=${location}` : ""}${origin ? `&origin=${origin}` : ""}`,
           className: "px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors",
           children: "Next \u2192"
         }
@@ -271,17 +294,21 @@ function CharacterList({ data, searchParams }) {
   ] }) });
 }
 function Navigation() {
-  return /* @__PURE__ */ jsx("nav", { className: "navigation bg-gray-100 p-4", children: /* @__PURE__ */ jsxs("div", { className: "container mx-auto flex flex-wrap items-center justify-between", children: [
-    /* @__PURE__ */ jsxs("div", { className: "flex items-center space-x-8", children: [
-      /* @__PURE__ */ jsx(Link, { href: "/", className: "text-blue-600 hover:text-blue-800 font-medium", children: "Home" }),
-      /* @__PURE__ */ jsx(Link, { href: "/characters", className: "text-blue-600 hover:text-blue-800 font-medium", children: "Characters" })
-    ] }),
-    /* @__PURE__ */ jsxs("div", { className: "flex items-center space-x-6 mt-2 sm:mt-0", children: [
-      /* @__PURE__ */ jsx(Link, { href: "/donations", className: "text-green-600 hover:text-green-800 font-medium", children: "Support Hosting" }),
-      /* @__PURE__ */ jsx(Link, { href: "/financial-report", className: "text-purple-600 hover:text-purple-800 font-medium", children: "Financial Report" })
-    ] })
-  ] }) });
+  return /* @__PURE__ */ jsx("nav", { className: "navigation bg-gray-100 p-4", children: /* @__PURE__ */ jsx("div", { className: "container mx-auto flex flex-wrap items-center justify-between", children: /* @__PURE__ */ jsxs("div", { className: "flex items-center space-x-8", children: [
+    /* @__PURE__ */ jsx(Link, { href: "/", className: "text-blue-600 hover:text-blue-800 font-medium", children: "Home" }),
+    /* @__PURE__ */ jsx(Link, { href: "/characters", className: "text-blue-600 hover:text-blue-800 font-medium", children: "Characters" })
+  ] }) }) });
 }
+
+// ../config/src/donation.ts
+var DONATION_CONFIG = {
+  kofi: {
+    username: process.env.NEXT_PUBLIC_KOFI_USERNAME || "your-kofi-username",
+    enabled: process.env.NEXT_PUBLIC_KOFI_ENABLED === "true" || false
+    // Default to false for compliance
+  }
+  // Other donation settings can be added here
+};
 var KofiButton = ({
   text = "Support on Ko-fi",
   color = "#29abe0",
@@ -331,6 +358,9 @@ function WelcomePage() {
 }
 function LoadingSpinner() {
   return /* @__PURE__ */ jsx("div", { className: "loading-spinner", children: /* @__PURE__ */ jsx("div", { children: "Loading characters..." }) });
+}
+function cn(...inputs) {
+  return twMerge(clsx(inputs));
 }
 var Card = ({ className, ...props }) => /* @__PURE__ */ jsx(
   "div",

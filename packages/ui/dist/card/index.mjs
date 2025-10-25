@@ -1,7 +1,11 @@
 "use client";
-import { cn } from '@rickandmorty/utils';
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import { jsx } from 'react/jsx-runtime';
 
+function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
 var Card = ({ className, ...props }) => /* @__PURE__ */ jsx(
   "div",
   {

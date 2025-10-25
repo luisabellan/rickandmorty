@@ -1,7 +1,15 @@
 "use client";
-import { DONATION_CONFIG } from '@rickandmorty/config/donation';
 import { jsx } from 'react/jsx-runtime';
 
+// ../config/src/donation.ts
+var DONATION_CONFIG = {
+  kofi: {
+    username: process.env.NEXT_PUBLIC_KOFI_USERNAME || "your-kofi-username",
+    enabled: process.env.NEXT_PUBLIC_KOFI_ENABLED === "true" || false
+    // Default to false for compliance
+  }
+  // Other donation settings can be added here
+};
 var KofiButton = ({
   text = "Support on Ko-fi",
   color = "#29abe0",

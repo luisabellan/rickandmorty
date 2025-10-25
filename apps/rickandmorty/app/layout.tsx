@@ -3,6 +3,7 @@ import { Inter, Poppins, Merienda } from 'next/font/google'
 import { Navigation } from '@rickandmorty/ui/navigation'
 import { ApolloWrapper } from './apollo-provider'
 import './globals.css'
+import React from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 const poppins = Poppins({ 

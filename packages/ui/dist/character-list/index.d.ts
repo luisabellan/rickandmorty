@@ -44,6 +44,7 @@ interface CharacterListProps {
         species?: string;
         gender?: string;
         location?: string;
+        origin?: string;
     };
 }
 export declare function CharacterList({ data, searchParams }: CharacterListProps): import("react/jsx-runtime").JSX.Element;

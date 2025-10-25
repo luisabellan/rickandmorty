@@ -7,13 +7,15 @@ function CharacterSearch({
   initialStatus = "",
   initialSpecies = "",
   initialGender = "",
-  initialLocation = ""
+  initialLocation = "",
+  initialOrigin = ""
 }) {
   const [search, setSearch] = useState(initialSearch);
   const [status, setStatus] = useState(initialStatus);
   const [species, setSpecies] = useState(initialSpecies);
   const [gender, setGender] = useState(initialGender);
   const [location, setLocation] = useState(initialLocation);
+  const [origin, setOrigin] = useState(initialOrigin);
   const handleSubmit = (e) => {
     e.preventDefault();
     const params = new URLSearchParams();
@@ -22,6 +24,7 @@ function CharacterSearch({
     if (species) params.set("species", species);
     if (gender) params.set("gender", gender);
     if (location) params.set("location", location);
+    if (origin) params.set("origin", origin);
     window.location.href = `/characters?${params.toString()}`;
   };
   const handleReset = () => {
@@ -30,6 +33,7 @@ function CharacterSearch({
     setSpecies("");
     setGender("");
     setLocation("");
+    setOrigin("");
     window.location.href = "/characters";
   };
   return /* @__PURE__ */ jsxs("div", { className: "bg-gray-800 bg-opacity-80 rounded-lg p-6 mb-8 shadow-lg", children: [
@@ -49,7 +53,7 @@ function CharacterSearch({
           }
         )
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4", children: [
+      /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4", children: [
         /* @__PURE__ */ jsxs("div", { children: [
           /* @__PURE__ */ jsx("label", { htmlFor: "status", className: "block text-sm font-medium text-gray-300 mb-2", children: "Status" }),
           /* @__PURE__ */ jsxs(
@@ -102,7 +106,7 @@ function CharacterSearch({
           )
         ] }),
         /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("label", { htmlFor: "location", className: "block text-sm font-medium text-gray-300 mb-2", children: "Location" }),
+          /* @__PURE__ */ jsx("label", { htmlFor: "location", className: "block text-sm font-medium text-gray-300 mb-2", children: "Current Location" }),
           /* @__PURE__ */ jsx(
             "input",
             {
@@ -111,6 +115,20 @@ function CharacterSearch({
               value: location,
               onChange: (e) => setLocation(e.target.value),
               placeholder: "Earth, Citadel...",
+              className: "w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsx("label", { htmlFor: "origin", className: "block text-sm font-medium text-gray-300 mb-2", children: "Origin" }),
+          /* @__PURE__ */ jsx(
+            "input",
+            {
+              type: "text",
+              id: "origin",
+              value: origin,
+              onChange: (e) => setOrigin(e.target.value),
+              placeholder: "Earth, Dimension...",
               className: "w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             }
           )
@@ -136,7 +154,7 @@ function CharacterSearch({
         )
       ] })
     ] }),
-    (search || status || species || gender || location) && /* @__PURE__ */ jsxs("div", { className: "mt-4 pt-4 border-t border-gray-700", children: [
+    (search || status || species || gender || location || origin) && /* @__PURE__ */ jsxs("div", { className: "mt-4 pt-4 border-t border-gray-700", children: [
       /* @__PURE__ */ jsx("p", { className: "text-sm text-gray-400 mb-2", children: "Active filters:" }),
       /* @__PURE__ */ jsxs("div", { className: "flex flex-wrap gap-2", children: [
         search && /* @__PURE__ */ jsxs("span", { className: "px-3 py-1 bg-blue-600 bg-opacity-50 text-blue-200 rounded-full text-sm", children: [
@@ -156,8 +174,12 @@ function CharacterSearch({
           gender
         ] }),
         location && /* @__PURE__ */ jsxs("span", { className: "px-3 py-1 bg-yellow-600 bg-opacity-50 text-yellow-200 rounded-full text-sm", children: [
-          "Location: ",
+          "Current Location: ",
           location
+        ] }),
+        origin && /* @__PURE__ */ jsxs("span", { className: "px-3 py-1 bg-orange-600 bg-opacity-50 text-orange-200 rounded-full text-sm", children: [
+          "Origin: ",
+          origin
         ] })
       ] })
     ] })

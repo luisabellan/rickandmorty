@@ -3,7 +3,7 @@ import * as React2 from 'react';
 import React2__default from 'react';
 import { jsx } from 'react/jsx-runtime';
 import { clsx } from 'clsx';
-import { cn } from '@rickandmorty/utils';
+import { twMerge } from 'tailwind-merge';
 
 function setRef(ref, value) {
   if (typeof ref === "function") {
@@ -159,6 +159,9 @@ var cva = (base, config) => (props) => {
   }, []);
   return cx(base, getVariantClassNames, getCompoundVariantClassNames, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
 };
+function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
 var buttonVariants = cva(
   "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {

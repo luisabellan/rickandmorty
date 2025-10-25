@@ -1,15 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter, Poppins, Merienda } from 'next/font/google'
+import { Navigation } from '@rickandmorty/ui'
 import { ApolloWrapper } from './apollo-provider'
 import './globals.css'
-import React, { lazy } from 'react';
-import dynamic from 'next/dynamic';
-
-// Dynamically import Navigation with SSR disabled to avoid server-side issues
-const Navigation = dynamic(() => import('./navigation-wrapper'), { 
-  ssr: false,
-  loading: () => <div>Loading navigation...</div> 
-});
+import React from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 const poppins = Poppins({ 
@@ -86,6 +80,8 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
 }
 
+import LayoutClient from './layout-client';
+
 export default function RootLayout({
   children,
 }: {
@@ -95,10 +91,9 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable} ${merienda.variable}`}>
       <body className={inter.className}>
         <ApolloWrapper>
-          <Navigation />
-          <main>
+          <LayoutClient>
             {children}
-          </main>
+          </LayoutClient>
         </ApolloWrapper>
       </body>
     </html>

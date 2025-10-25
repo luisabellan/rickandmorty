@@ -16,58 +16,55 @@ const { PrismaCharacter, PrismaLocation, PrismaEpisode } = require('./graphql/pr
 const handle = require('./handlers')
 const routes = require('./routes')
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  introspection: true,
-  playground: true,
-  validationRules: [handle.depth(4)],
-  dataSources: () => ({
-    character: new PrismaCharacter(),
-    location: new PrismaLocation(),
-    episode: new PrismaEpisode(),
-  }),
-})
-
-/* istanbul ignore next */
-if (app.get('env') !== 'test') {
-  app.use(
-    morgan(':status | :method :url :response-time ms | :remote-addr', {
-      skip: (req) => req.method !== 'GET',
+const startServer = async () => {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    introspection: true,
+    playground: true,
+    validationRules: [handle.depth(4)],
+    dataSources: () => ({
+      character: new PrismaCharacter(),
+      location: new PrismaLocation(),
+      episode: new PrismaEpisode(),
     }),
-  )
-}
+  })
 
-app.use(cors())
+  await server.start();
 
-app.set('trust proxy', 1)
+  /* istanbul ignore next */
+  if (app.get('env') !== 'test') {
+    app.use(
+      morgan(':status | :method :url :response-time ms | :remote-addr', {
+        skip: (req) => req.method !== 'GET',
+      }),
+    )
+  }
 
-// Apply Apollo middleware first (it has its own body parsing)
-server.applyMiddleware({ app })
+  app.use(cors())
 
-// Use Express built-in body parsing for REST API routes
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+  app.set('trust proxy', 1)
 
-app.use('/api/character/avatar', express.static(path.join(__dirname, 'images')))
-app.use('/api', routes)
+  // Apply Apollo middleware first (it has its own body parsing)
+  server.applyMiddleware({ app })
 
-app.use(handle.error.notFound)
-app.use(handle.error.productionErrors)
+  // Use Express built-in body parsing for REST API routes
+  app.use(express.urlencoded({ extended: true }))
+  app.use(express.json())
 
-const PORT = process.env.PORT || 8080
-app.listen(PORT, async () => {
-  console.log(
-    '\x1b[34m%s\x1b[0m',
-    `
+  app.use('/api/character/avatar', express.static(path.join(__dirname, 'images')))
+  app.use('/api', routes)
 
-  ${app.get('env').toUpperCase()}
+  app.use(handle.error.notFound)
+  app.use(handle.error.productionErrors)
 
-  REST      → http://localhost:${PORT}/api/
-  GraphQL   → http://localhost:${PORT}${server.graphqlPath}/
-  Database  → PostgreSQL with Prisma
-  `,
-  )
+  const PORT = process.env.PORT || 4000
+  app.listen(PORT, () => {
+    console.log(
+      '\x1b[34m%s\x1b[0m',
+      `\n\n  ${app.get('env').toUpperCase()}\n\n  REST      → http://localhost:${PORT}/api/\n  GraphQL   → http://localhost:${PORT}${server.graphqlPath}/\n  Database  → PostgreSQL with Prisma\n  `,
+    )
+  })
   
   // Graceful shutdown handling
   process.on('SIGINT', async () => {
@@ -75,6 +72,11 @@ app.listen(PORT, async () => {
     await prisma.$disconnect()
     process.exit(0)
   })
-})
+}
+
+startServer().catch(error => {
+  console.error('Error starting server:', error);
+  process.exit(1);
+});
 
 module.exports = app

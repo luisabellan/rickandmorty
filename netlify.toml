@@ -1,18 +1,11 @@
 [build]
   base = "/"
   publish = "apps/rickandmorty/.next"
-  command = "pnpm install && pnpm --filter ./apps/rickandmorty... run build"
+  command = "pnpm install && cd apps/rickandmorty && pnpm build"
 
 [build.environment]
   NODE_VERSION = "20"
-  NEXT_PUBLIC_API_URL = "https://rickandmortyapi.com/graphql"
+  NEXT_PUBLIC_API_URL = "https://rickandmorty-api-csmq.onrender.com/graphql"
 
-# Next.js plugin for optimal deployment
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Redirect rules
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

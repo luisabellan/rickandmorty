@@ -1,6 +1,6 @@
 [build]
   base = "apps/rickandmorty"
-  publish = "apps/rickandmorty/.next"
+  publish = ".next"
   command = "pnpm build"
 
 [[plugins]]

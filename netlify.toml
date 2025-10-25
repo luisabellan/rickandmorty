@@ -1,0 +1,7 @@
+[build]
+  base = "apps/rickandmorty"
+  publish = "apps/rickandmorty/.next"
+  command = "pnpm build"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

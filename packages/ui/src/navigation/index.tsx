@@ -13,14 +13,15 @@ export function Navigation() {
             Characters
           </Link>
         </div>
-        <div className="flex items-center space-x-6 mt-2 sm:mt-0">
+        {/* Temporarily hidden - Support Hosting and Financial Report */}
+        {/* <div className="flex items-center space-x-6 mt-2 sm:mt-0">
           <Link href="/donations" className="text-green-600 hover:text-green-800 font-medium">
             Support Hosting
           </Link>
           <Link href="/financial-report" className="text-purple-600 hover:text-purple-800 font-medium">
             Financial Report
           </Link>
-        </div>
+        </div> */}
       </div>
     </nav>
   );

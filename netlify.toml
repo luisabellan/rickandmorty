@@ -1,6 +1,5 @@
 [build]
   base = "apps/rickandmorty"
-  publish = ".next"
   command = "pnpm build"
 
 [build.environment]

@@ -19,8 +19,8 @@ export default function Header() {
 
   return (
     <div className="ui centered">
-      <FanPageHeader className="">
-        <FanPageTitleH1 className="">Rick &amp; Morty Fan Page</FanPageTitleH1>
+      <FanPageHeader>
+        <FanPageTitleH1>Rick &amp; Morty Fan Page</FanPageTitleH1>
       </FanPageHeader>
     </div>
   );

@@ -26,7 +26,7 @@ export default function CharacterList() {
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     axios
       .get(currentPage)
-      .then(res => {
+      .then((res) => {
         let charactersData = res.data.results;
 
         setData(res.data);
@@ -35,17 +35,12 @@ export default function CharacterList() {
         setPrevPage(res.data.info.prev);
         setNextPage(res.data.info.next);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, [currentPage]);
-  console.log("previous page:", prevPage);
-  //console.log(data);
-  //console.log(error)
 
   // This shows while the data is being processed
   if (!characters.length) {
     return <h1 className="loading-results">Loading results...</h1>;
-  } else {
-    console.log(characters);
   }
 
   // Handlers
@@ -98,7 +93,6 @@ export default function CharacterList() {
             <label>
               <span>Name:</span>
               <input
-               
                 name="name"
                 type="text"
                 value={search}
@@ -106,13 +100,11 @@ export default function CharacterList() {
                 onChange={searchHandler}
               />
             </label>
-            {/*<Button type="submit"><span className="button-text fixed-height">Search</span></Button>*/}
           </form>
         </div>
       </div>
       <GridDiv>
-        {/* TODO: `array.map()` over your state here! */}
-        {filteredCharacters.map(character => (
+        {filteredCharacters.map((character) => (
           <CardDiv>
             <CharacterCard char={character} />
           </CardDiv>

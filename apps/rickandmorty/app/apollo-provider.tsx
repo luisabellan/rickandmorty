@@ -12,7 +12,16 @@ function makeClient() {
   });
 
   return new ApolloClient({
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      // Add type policies for better SSR support
+      typePolicies: {
+        Query: {
+          fields: {
+            // Configure fields that might cause SSR issues
+          },
+        },
+      },
+    }),
     link: httpLink,
   });
 }

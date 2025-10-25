@@ -7,12 +7,12 @@ import React from 'react';
 
 function makeClient() {
   const httpLink = createHttpLink({
-    uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT || 'https://rickandmortyapi.com/graphql',
+    uri: process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT || 'https://rickandmortyapi.com/graphql',
     credentials: 'same-origin',
   });
 
   return new ApolloClient({
-    cache: new InMemoryCache().restore({}),
+    cache: new InMemoryCache(),
     link: httpLink,
   });
 }

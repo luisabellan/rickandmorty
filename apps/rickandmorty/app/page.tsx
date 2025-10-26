@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
-import { RickAndMortyLanding } from '@rickandmorty/ui/rickandmorty-landing'
+import { Suspense } from 'react'
+import { LoadingSpinner } from '@rickandmorty/ui/loading-spinner'
+import { RickAndMortyLandingWrapper } from './rickandmorty-landing-wrapper'
 
 export const metadata: Metadata = {
   title: 'Rick and Morty Universe - Fan Site',
@@ -11,5 +13,9 @@ export const metadata: Metadata = {
 }
 
 export default function LandingPage() {
-  return <RickAndMortyLanding />
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><LoadingSpinner /></div>}>
+      <RickAndMortyLandingWrapper />
+    </Suspense>
+  )
 }

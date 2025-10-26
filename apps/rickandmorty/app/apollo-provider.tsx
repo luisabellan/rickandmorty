@@ -1,8 +1,7 @@
 'use client';
 
-import { ApolloNextAppProvider } from '@apollo/experimental-nextjs-app-support';
+import { ApolloNextAppProvider, ApolloClient, InMemoryCache } from '@apollo/experimental-nextjs-app-support';
 import { createHttpLink } from '@apollo/client';
-import { ApolloClient, InMemoryCache } from '@apollo/client-integration-nextjs';
 import React from 'react';
 
 function makeClient() {

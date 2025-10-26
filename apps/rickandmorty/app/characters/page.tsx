@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
-import { CharacterList } from '@rickandmorty/ui/character-list'
 import { Suspense } from 'react'
 import { LoadingSpinner } from '@rickandmorty/ui/loading-spinner'
+import { CharacterListWrapper } from './character-list-wrapper'
 
 export const metadata: Metadata = {
   title: 'Rick & Morty Characters',
@@ -177,8 +177,8 @@ export default async function CharactersPage({ searchParams }: CharactersPagePro
   const data = await fetchCharacters(resolvedSearchParams);
   
   return (
-    <div>
-      <CharacterList data={data} searchParams={resolvedSearchParams} />
-    </div>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><LoadingSpinner /></div>}>
+      <CharacterListWrapper data={data} searchParams={resolvedSearchParams} />
+    </Suspense>
   )
 }

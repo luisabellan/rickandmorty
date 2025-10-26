@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter, Poppins, Merienda } from 'next/font/google'
-import { Navigation } from '@rickandmorty/ui'
-import { ApolloWrapper } from './apollo-provider'
 import './globals.css'
 import React from 'react';
 
@@ -90,11 +88,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${merienda.variable}`}>
       <body className={inter.className}>
-        <ApolloWrapper>
-          <LayoutClient>
-            {children}
-          </LayoutClient>
-        </ApolloWrapper>
+        <LayoutClient>
+          {children}
+        </LayoutClient>
       </body>
     </html>
   )
